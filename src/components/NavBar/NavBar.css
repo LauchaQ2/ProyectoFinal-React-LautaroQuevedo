@@ -2,18 +2,11 @@
     font-family: "Roboto";
 }
 .header{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 100%;
-    margin: 0;
-    margin-bottom: 25px;
-    padding: 0;
-    height: 100px;
     box-shadow: 2px 1px 10px #888888;
+    margin-bottom: 30px;
 }
 #logo{
-    width: 200px;
+    width: 150px;
 }
 .divLogo{
     width: auto;
