@@ -9,7 +9,7 @@ export default function Card(){
         <div className="product">
             <h2>PRODUCTO</h2>
             <img width="100" src={imgProduct}/>
-            <ItemCount/>
+            <ItemCount stock="5"/>
         </div>
     )
 }
