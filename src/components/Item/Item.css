@@ -1,8 +1,20 @@
+*{
+    margin-bottom: 5px;
+    font-family: "Roboto";
+}
 .product{
     width: 300px;
-    height: 330px;
-    border: 1px solid black;
-    border-radius: 3px;
+    height: auto;
+    border: 1px solid #5c5c5c;
+    border-radius: 5px;
     text-align: center;
     justify-content: center;
+    box-shadow: 2px 2px 2px #888888;
+}
+.img-item{
+    width: 100%;
+}
+.title{
+    flex-wrap: wrap;
+    margin-bottom: 0px;
 }

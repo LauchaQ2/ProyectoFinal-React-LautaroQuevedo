@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../ItemListContainer/ItemListContainer.css';
+import '../ItemList/ItemList.css';
 import Item from '../Item/Item.js';
 import Container from 'react-bootstrap/Nav';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -16,28 +17,28 @@ const dataProducts = [
       title: "Club de los Psicopatas",
       description: "tapa dura",
       price: 2000,
-      pictureUrl: "libro1.png"
+      pictureUrl: "https://i.ibb.co/NS1g4Lq/libro1.jpg"
     },
     {
       id: "2",
       title: "El Italiano",
       description: "tapa blanda",
       price: 4000,
-      pictureUrl: "libro2.png"
+      pictureUrl: "https://i.ibb.co/w7J5SJJ/libro2.jpg"
     },
     {
       id: "3",
       title: "Billy Summers",
       description: "tapa dura",
       price: 5000,
-      pictureUrl: "libro3.png"
+      pictureUrl: "https://i.ibb.co/z8SGSVf/libro3.jpg"
     },
     {
       id: "4",
       title: "Y el mundo se detuvo",
       description: "tapa blanda",
       price: 7000,
-      pictureUrl: "libro4.png"
+      pictureUrl: "https://i.ibb.co/kGNXSr1/libro4.jpg"
     }
 ];
 
@@ -60,7 +61,7 @@ useEffect(() => {
 
     return(
         
-        <Container fluid className="justify-content-center d-flex flex-wrap">
+        <div className="container-fluid d-flex flex-wrap justify-content-around">
           {
                     loader
                         ?
@@ -69,13 +70,12 @@ useEffect(() => {
                         <>
                             {products.map(product => {
                                 return (
-                                    <Grid item xs={3} key={product.id}>
                                         <Item data={product} />
-                                    </Grid>
+                                    
                                 )
                             })}
                             </>
           }
-        </Container>
+        </div>
     )
 }

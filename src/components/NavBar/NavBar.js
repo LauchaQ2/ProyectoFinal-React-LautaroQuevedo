@@ -7,13 +7,13 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export default function NavBar(){
 return(
-    <Navbar className="header" bg="white" expand="lg">
-        <div className="container-fluid d-flex justify-content-between">
-        <Navbar.Brand><img id="logo" src={logo} /></Navbar.Brand>
+    <Navbar className="header align-items-center" bg="white" expand="lg">
+        <div className="container-fluid d-flex align-items-center justify-content-between mb-0">
+        <Navbar.Brand className="align-items-center mb-0"><img id="logo" src={logo} /></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="ms-auto">
-      <Nav.Link href="#features">Inicio</Nav.Link>
+    <Nav className="ms-auto d-flex align-items-center">
+      <Nav.Link className="align-items-center" href="#features">Inicio</Nav.Link>
       <Nav.Link href="#pricing">Productos</Nav.Link>
       <Nav.Link href="#pricing">Contacto</Nav.Link>
       <Nav.Link href="#pricing">Nosotros</Nav.Link>

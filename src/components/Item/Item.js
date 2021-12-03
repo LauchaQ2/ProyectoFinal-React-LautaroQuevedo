@@ -8,9 +8,9 @@ export default function Item({data}){
     return(
 
         <div className="product">
-            <h2>{data.title}</h2>
-            <img width="100px" src={`../../assets/${data.pictureUrl}`} alt="product image" />
-            <h4>${data.price}</h4>
+            <h4 className="bg-light title">{data.title}</h4>
+            <img className="img-item" src={data.pictureUrl} alt={data.title} />
+            <h5>${data.price}</h5>
             <ItemCount stock="5"/>
         </div>
     )

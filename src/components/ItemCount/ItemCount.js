@@ -22,13 +22,11 @@ export default function ItemCount({stock}){
         return(
             <div>
             <h5>Stock: {stock}</h5>
-            <div className="justify-content-center input-group">
-            <input type="text" className="btn btn1 bg-light border" readOnly value={amount}/>
-            </div>
             <button onClick={subAmount} className="btn btn2 bg-light border">-</button>
+            <input type="text" className="btn btn1 bg-light border" readOnly value={amount}/>
             <button onClick={addAmount} className="btn btn2 bg-light border">+</button>
-            <div className="justify-content-center input-group mb-3">
-            <button className="btn chart bg-light border">AGREGAR</button>
+            <div className="justify-content-center input-group mt-2">
+            <button className="btn chart border">AGREGAR</button>
             </div>
             </div>
         )
