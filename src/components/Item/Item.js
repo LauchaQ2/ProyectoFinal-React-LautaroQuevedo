@@ -9,7 +9,8 @@ export default function Item({data}){
 
         <div className="product">
             <h2>{data.title}</h2>
-            <img width="100px" src="src\assets\libro1.png" alt="product image" />
+            <img width="100px" src={`../../assets/${data.pictureUrl}`} alt="product image" />
+            <h4>${data.price}</h4>
             <ItemCount stock="5"/>
         </div>
     )

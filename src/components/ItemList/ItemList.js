@@ -4,6 +4,7 @@ import Item from '../Item/Item.js';
 import Container from 'react-bootstrap/Nav';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
+import Col from 'react-bootstrap/Col'
 
 export default function ItemList(){
 
@@ -22,21 +23,21 @@ const dataProducts = [
       title: "El Italiano",
       description: "tapa blanda",
       price: 4000,
-      pictureUrl: 'libro2.png'
+      pictureUrl: "libro2.png"
     },
     {
       id: "3",
       title: "Billy Summers",
       description: "tapa dura",
       price: 5000,
-      pictureUrl: 'libro3.png'
+      pictureUrl: "libro3.png"
     },
     {
       id: "4",
       title: "Y el mundo se detuvo",
       description: "tapa blanda",
       price: 7000,
-      pictureUrl: 'libro4.png'
+      pictureUrl: "libro4.png"
     }
 ];
 
@@ -59,13 +60,13 @@ useEffect(() => {
 
     return(
         
-        <Container fluid className="justify-content-center">
+        <Container fluid className="justify-content-center d-flex flex-wrap">
           {
                     loader
                         ?
                         <CircularProgress />
                         :
-                        <Grid container spacing={2}>
+                        <>
                             {products.map(product => {
                                 return (
                                     <Grid item xs={3} key={product.id}>
@@ -73,7 +74,7 @@ useEffect(() => {
                                     </Grid>
                                 )
                             })}
-                        </Grid>
+                            </>
           }
         </Container>
     )
