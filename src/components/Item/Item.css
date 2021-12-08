@@ -1,5 +1,4 @@
 *{
-    margin-bottom: 5px;
     font-family: "Roboto";
 }
 .product{
@@ -10,6 +9,7 @@
     text-align: center;
     justify-content: center;
     box-shadow: 2px 2px 2px #888888;
+    margin-bottom: 5px;
 }
 .img-item{
     width: 100%;
