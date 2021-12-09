@@ -1,5 +1,6 @@
-*{
-    border:1px solid black;
+.detail{
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .a{
     height: auto;
