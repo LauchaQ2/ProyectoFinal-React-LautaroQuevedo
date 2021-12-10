@@ -4,6 +4,7 @@ import logo from '../../assets/logo en negro/logo.svg';
 import CartWidget from '../CartWidget/CartWidget.js';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {Link} from 'react-router-dom';
 
 export default function NavBar(){
 return(
@@ -13,9 +14,13 @@ return(
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="ms-auto d-flex align-items-center">
-      <Nav.Link className="align-items-center" href="#features">Inicio</Nav.Link>
+      <Link to="/">
+        <Nav.Link className="align-items-center" href="#features">Inicio</Nav.Link>
+      </Link>
       <Nav.Link href="#pricing">Productos</Nav.Link>
-      <Nav.Link href="#pricing">Contacto</Nav.Link>
+      <Link to="/contact">
+        <Nav.Link href="/contact">Contacto</Nav.Link>
+      </Link>
       <Nav.Link href="#pricing">Nosotros</Nav.Link>
       <Nav.Link><a href="login.html"><img className="imgheader" src="https://i.ibb.co/HGfVk7S/users.png" /></a></Nav.Link>
     </Nav>

@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Nav';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Col from 'react-bootstrap/Col'
+import {Link} from 'react-router-dom';
+
 
 export default function ItemList(){
 
@@ -71,7 +73,6 @@ useEffect(() => {
                             {products.map(product => {
                                 return (
                                         <Item data={product} />
-                                    
                                 )
                             })}
                             </>
