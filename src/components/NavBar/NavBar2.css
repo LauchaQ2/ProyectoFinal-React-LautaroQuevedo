@@ -1,0 +1,42 @@
+nav {}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 25px;
+    background: white;
+}
+
+.container-logo {
+    width: 150px;
+}
+
+.container-logo img {
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    margin-right: 20px;
+}
+
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li:nth-of-type(1) {
+    margin-left: 0px;
+}
+
+nav button {
+    color: black !important;
+    border-color: black !important;
+}
+
+.container-navegation {
+    display: flex;
+    align-items: center;
+}

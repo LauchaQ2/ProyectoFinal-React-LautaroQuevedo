@@ -21,7 +21,6 @@ export default function ItemCount({stock}){
 
         return(
             <div>
-            <h5>Stock: {stock}</h5>
             <button onClick={subAmount} className="btn btn2 bg-light border">-</button>
             <input type="text" className="btn btn1 bg-light border" readOnly value={amount}/>
             <button onClick={addAmount} className="btn btn2 bg-light border">+</button>

@@ -1,7 +1,29 @@
-.detail{
-    border: 1px solid black;
-    border-radius: 5px;
+*{
+}
+.centrado{
+    display: flex;
+    flex-wrap: wrap;
 }
 .a{
     height: auto;
+}
+.w{
+    display: flex;
+    width: 100%;
+    text-align: left;
+    height: auto!important;
+    align-items: center;
+}
+.img-border{
+    border: 1px solid rgb(24, 23, 23);
+}
+h1{
+    font-size: 4vw;
+}
+.detail h3{
+    font-size: 3vw;
+    color: red;
+}
+.detail h5{
+    font-size: 1vw;
 }

@@ -1,5 +1,6 @@
 *{
     font-family: "Roboto";
+    text-decoration: none!important;
 }
 .product{
     width: 300px;
@@ -10,6 +11,7 @@
     justify-content: center;
     box-shadow: 2px 2px 2px #888888;
     margin-bottom: 5px;
+
 }
 .img-item{
     width: 100%;
@@ -17,4 +19,18 @@
 .title{
     flex-wrap: wrap;
     margin-bottom: 0px;
+    color:black;
+}
+h5{
+    color:black;
+}
+
+span.stock-text {
+    position: absolute;
+    margin-left: 1%;
+    background-color: rgb(255, 78, 78);
+    color: black;
+    border-radius: 30px;
+    padding: 5px;
+    font-weight: bold;
 }

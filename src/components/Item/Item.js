@@ -4,17 +4,21 @@ import imgProduct from '../../assets/fragile.svg'
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
 
-export default function Item({data}){
-    console.log(data.pictureUrl);
+export default function Item({products}){
+
+    console.log(products);
+
     return(
 
         <div className="product">
-            <Link to={`/product/${data.id}`}>
-            <h4 className="bg-light title">{data.title}</h4>
-            <img className="img-item" src={data.pictureUrl} alt={data.title} />
-            <h5>${data.price}</h5>
-            <ItemCount stock="5"/>
+            <Link to={`/product/${products.id}`}>
+            <h5 className="title">{products.title}</h5>
+            <span className="stock-text">Stock : {products.stock}</span>
+            <img className="img-item" src={products.pictureURL} alt={products.title} />
+            <h5>${products.price}</h5>
             </Link>
+            <ItemCount stock={products.stock}/>
+            
         </div>
     )
 }
