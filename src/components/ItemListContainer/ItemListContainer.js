@@ -28,7 +28,7 @@ export default function ItemListContainer(){
 
     return(
         <div>
-            <h1 className='text-center'>Productos Destacados</h1>
+            <h2 className='titlehome text-left mb-2'>PRODUCTOS</h2>
             {
                 
             loader

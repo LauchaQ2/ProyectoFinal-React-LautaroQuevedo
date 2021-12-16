@@ -1,78 +1,10 @@
 *{
     font-family: "Roboto";
 }
-.header{
-    box-shadow: 2px 1px 10px #888888;
-    margin-bottom: 30px;
-}
 #logo{
     width: 150px;
     margin:0;
 }
-.divLogo{
-    width: auto;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-.menu{
-    width: 40%;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: white;
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    list-style: none;
-}
-.menu2{
-    width: 100px;
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    text-decoration: none;
-    list-style: none;
-    background-color: white;
-    padding: 0;
-    margin: 0;
-    text-align: center;;
-}
-li{
-    text-align: center;
-    width: auto;
-    height: auto;
-    font-size: 20px;
-    padding: inherit;
-    margin: inherit;
-}
-.linkStyle{
-    list-style: none;
-    text-decoration: none;
-    width: auto!important;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    padding: inherit;
-    margin: inherit;
-    border-bottom: 1px solid grey;
-    transition-duration: 1000ms;
-    transition-property: border-bottom;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-.linkStyle:hover{
-    border-bottom: 1px solid rgb(255, 0, 0);
-    color: black;
-}
-.imgheader{
-    width: 30px;
-    height: 30px;
-    border-bottom: none!important;
+.navb{
+    height: 100px!important;
 }

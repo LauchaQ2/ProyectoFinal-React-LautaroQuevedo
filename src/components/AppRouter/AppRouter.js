@@ -15,8 +15,8 @@ export default function AppRouter(){
         <BrowserRouter>
             <NavBar/>
                 <Routes>
-                <Route path="/categories/:category" element={<CategoriesDetail/>}/>
-                <Route path="/categories" element={<CategoriesContainer/>}/>
+                <Route path="/category/:category" element={<CategoriesDetail/>}/>
+                <Route path="/category" element={<CategoriesContainer/>}/>
                 <Route path="/aboutus" element={<AboutUsPage/>}/>
                 <Route path="/contact" element={<ContactPage/>}/>
                 <Route path="/product/:id" element={<ItemDetailContainer/>}/>

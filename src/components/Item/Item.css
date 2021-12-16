@@ -11,7 +11,7 @@
     justify-content: center;
     box-shadow: 2px 2px 2px #888888;
     margin-bottom: 5px;
-
+    padding: 10px;
 }
 .img-item{
     width: 100%;
@@ -28,9 +28,7 @@ h5{
 span.stock-text {
     position: absolute;
     margin-left: 1%;
-    background-color: rgb(255, 78, 78);
     color: black;
     border-radius: 30px;
     padding: 5px;
-    font-weight: bold;
 }

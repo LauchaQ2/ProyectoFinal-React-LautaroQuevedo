@@ -15,7 +15,7 @@ export default function ItemList({products}){
     return(
         
         <div className="container-fluid d-flex flex-wrap justify-content-around">
-                    {products.map(product => {
+                   {products.map(product => {
                                               return (
                                               <Item products={product} />
                                               )

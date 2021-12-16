@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { apiURL } from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
 import ItemList from '../ItemList/ItemList';
+import CategoryTitle from '../CategoryTitle/CategoryTitle';
 
 
 export default function CategoriesDetail(){
@@ -13,6 +14,7 @@ export default function CategoriesDetail(){
 
 const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
+    const [categtitle, setCategtitle] = useState([])
     
     useEffect(() => {
         fetch(apiURL)
@@ -20,23 +22,28 @@ const [loader, setLoader] = useState(true)
           return response.json();
         })
         .then(resultsProducts =>{
-          resultsProducts.filter( resultProduct =>{
-            if (resultProduct.category === category){
-              products.push(resultProduct);
-            }
-          })
+         const filteredData = resultsProducts.filter( resultProduct => resultProduct.category === category);
+         setProducts(filteredData);
+          if(category === '1'){
+            setCategtitle("VINOS");
+            console.log(categtitle);
+          } else{
+            setCategtitle("CERVEZAS")
+            console.log(categtitle);
+          }
           setTimeout( () => {
             console.log(products);
             setLoader(false)
           }, 2000);
+         
         })
     }, [category])
 
+    
 
     console.log(products);
     return(
         <div>
-            <h1 className='text-center'>Cervezas</h1>
             {
                 
             loader
@@ -45,7 +52,7 @@ const [loader, setLoader] = useState(true)
                     <CircularProgress />
                     </div>
                   :
-                  <ItemList products={products}/>
+                  <><CategoryTitle title={categtitle} /><ItemList products={products} /></>
             }
             
         </div>
