@@ -26,8 +26,8 @@ export default function NavBar() {
           <Link to="/">
             <Button style={{color: "#000000"}}>Inicio</Button>
           </Link>
-          <Link to="/category">
-            <Button style={{color: "#000000"}}>Categorías</Button>
+          <Link to="/category/all">
+            <Button style={{color: "#000000"}}>Productos</Button>
           </Link>
           <Link to="/contact">
             <Button style={{color: "#000000"}}>Contacto</Button>

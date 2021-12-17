@@ -9,18 +9,19 @@ import AboutUsPage from '../../pages/AboutUsPage/AboutUsPage.js';
 import ProductsPage from '../../pages/ProductsPage/ProductsPage.js';
 import CategoriesContainer from '../CategoriesContainer/CategoriesContainer.js';
 import CategoriesDetail from '../CategoriesDetail/CategoriesDetail.js';
+import ItemListContainer from '../ItemListContainer/ItemListContainer.js';
 
 export default function AppRouter(){
     return(
         <BrowserRouter>
             <NavBar/>
                 <Routes>
-                <Route path="/category/:category" element={<CategoriesDetail/>}/>
-                <Route path="/category" element={<CategoriesContainer/>}/>
+                <Route path="/category/:category" element={<ItemListContainer/>}/>
                 <Route path="/aboutus" element={<AboutUsPage/>}/>
                 <Route path="/contact" element={<ContactPage/>}/>
                 <Route path="/product/:id" element={<ItemDetailContainer/>}/>
                 <Route path="/" element={<HomePage/>}/>
+                <Route index element={<HomePage />}/> 
                 </Routes>
             <Footer/>
       </BrowserRouter>
