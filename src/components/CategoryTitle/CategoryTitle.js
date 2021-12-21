@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import '../CategoriesBanner/CategoriesBanner.css';
-import '../CategoryTitle/CategoryTitle.css';
+import './CategoryTitle.css';
 
 
 export default function CategoryTitle({title}){

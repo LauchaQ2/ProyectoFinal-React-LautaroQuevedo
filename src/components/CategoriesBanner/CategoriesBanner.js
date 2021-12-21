@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../CategoriesBanner/CategoriesBanner.css';
+import './CategoriesBanner.css';
 import { Link } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
 
