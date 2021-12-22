@@ -10,7 +10,7 @@ import Modal from 'react-bootstrap/Modal'
 export default function ItemDetail({products}){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const [loader, setLoader] = useState(true)
+    const [handleItemCount, sethandleItemCount] = useState(true)
     const handleShow = () => setShow(true);
     const [itemCart, setItemCart] = useState(
         {
@@ -30,7 +30,7 @@ export default function ItemDetail({products}){
     
     const sendItem = () =>{
         console.log(itemCart)
-        setLoader(false)
+        sethandleItemCount(false)
 
     }
 
@@ -48,7 +48,7 @@ export default function ItemDetail({products}){
                     <h3 className='w'>${products.price}</h3>
                     <h5 className='w'>Stock: {products.stock}</h5>
                     <div className='d-block'>
-                    { loader ?
+                    { handleItemCount ?
                     <ItemCount onAdd={onAdd} stock={products.stock}/>
                     :
                     <></>
