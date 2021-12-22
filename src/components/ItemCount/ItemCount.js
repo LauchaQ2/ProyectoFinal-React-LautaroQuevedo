@@ -4,7 +4,7 @@ import '../ItemCount/ItemCount.css';
 export default function ItemCount({stock, onAdd}){
         
 
-        const [amount, setAmount] = useState(1);
+        const [amount, setAmount] = useState(0);
 
         const addAmount = () => {
             if(amount<stock){

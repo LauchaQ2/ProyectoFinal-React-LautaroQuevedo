@@ -10,8 +10,8 @@ import Modal from 'react-bootstrap/Modal'
 export default function ItemDetail({products}){
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    const [loader, setLoader] = useState(true)
     const handleShow = () => setShow(true);
-
     const [itemCart, setItemCart] = useState(
         {
         title: products.title,
@@ -30,6 +30,8 @@ export default function ItemDetail({products}){
     
     const sendItem = () =>{
         console.log(itemCart)
+        setLoader(false)
+
     }
 
 
@@ -46,11 +48,17 @@ export default function ItemDetail({products}){
                     <h3 className='w'>${products.price}</h3>
                     <h5 className='w'>Stock: {products.stock}</h5>
                     <div className='d-block'>
+                    { loader ?
                     <ItemCount onAdd={onAdd} stock={products.stock}/>
+                    :
+                    <></>
+                    }
+                    <Button className="btn cart chart border" onClick={sendItem}>Agregar</Button>
+                    <div>
                     <Link to={`/cart`}>
-                    <Button className="btn chart border" onClick={sendItem}>Comprar</Button>
+                    <Button style={{background: "red"}} variant="contained">Finalizar mi compra</Button>
                     </Link>
-
+                    </div>
 
                     <svg id='eye' onClick={handleShow} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>
                     <Modal show={show} onHide={handleClose}>
@@ -72,9 +80,9 @@ export default function ItemDetail({products}){
                         </Button>
                         </Modal.Footer>
                     </Modal>
-
-
+                    
                     </div>
+                    
                 </div>
             </div>
         </div>

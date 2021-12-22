@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../../assets/YoTomo/logo.svg';
@@ -7,9 +8,15 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Container } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import '../NavBar/NavBar.css';
+import ThemeContext from '../../context/ThemeContext';
+import CartContext from '../../context/CartContext';
+
 
 export default function NavBar() {
+  const {theme, changeTheme} = useContext(ThemeContext);
+  const {products, showProducts} = useContext(CartContext);
 
+  console.log("tema desde navbar: ", theme)
 
   return (
     
@@ -37,7 +44,10 @@ export default function NavBar() {
           </Link>
           </ul>
           </Navbar.Collapse>
+          <Button onClick={changeTheme} style={{color: "#000000"}}>cambio</Button>
+          <Button onClick={showProducts} style={{color: "#000000"}}>
           <CartWidget/>
+          </Button>
         
         </Container>
         </Navbar>
