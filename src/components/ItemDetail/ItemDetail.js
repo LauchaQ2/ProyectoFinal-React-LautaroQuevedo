@@ -21,14 +21,14 @@ export default function ItemDetail({data}){
     const [itemCart,setItemCart]= useState(
         {
             id:data.id,
-            nombre:data.name,
+            title:data.title,
+            img:data.pictureURL,
             quantity:0,
-            price:data.price,
-            image:data.pictureURL
+            price:data.price
         }
     )
     console.log(itemCart);
-        
+
     const onAdd =(value) =>{
         console.log("items add ",value)
         itemCart.quantity=value
