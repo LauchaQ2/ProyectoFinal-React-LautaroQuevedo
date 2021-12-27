@@ -16,7 +16,6 @@ export default function NavBar() {
   const {theme, changeTheme} = useContext(ThemeContext);
   const {products, showProducts} = useContext(CartContext);
 
-  console.log("tema desde navbar: ", theme)
 
   return (
     
@@ -44,8 +43,7 @@ export default function NavBar() {
           </Link>
           </ul>
           </Navbar.Collapse>
-          <Button onClick={changeTheme} style={{color: "#000000"}}>cambio</Button>
-          <Button onClick={showProducts} style={{color: "#000000"}}>
+          <Button style={{color: "#000000"}}>
           <CartWidget/>
           </Button>
         

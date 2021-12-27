@@ -1,38 +1,43 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './ItemDetail.css';
 import imgProduct from '../../assets/fragile.svg'
 import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material';
 import {Link} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
+import CartContext from '../../context/CartContext';
 
 
-export default function ItemDetail({products}){
+export default function ItemDetail({data}){
+    console.log(data);
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const [handleItemCount, sethandleItemCount] = useState(true)
     const handleShow = () => setShow(true);
-    const [itemCart, setItemCart] = useState(
+       
+    const [quantityItem,setQuantityItem] = useState(0)
+    const {addProducts, products} = useContext(CartContext)
+    const [itemCart,setItemCart]= useState(
         {
-        title: products.title,
-        id: products.id,
-        price: products.price,
-        quantity: 0,
-        total: 0
+            id:data.id,
+            nombre:data.name,
+            quantity:0,
+            price:data.price,
+            image:data.pictureURL
+        }
+    )
+    console.log(itemCart);
+        
+    const onAdd =(value) =>{
+        console.log("items add ",value)
+        itemCart.quantity=value
     }
-)
 
-    const onAdd = (value) =>{
-        console.log("items agregados: ", value)
-        itemCart.quantity = value;
-        itemCart.total = value * itemCart.price;
-    }
-    
-    const sendItem = () =>{
-        console.log(itemCart)
-        sethandleItemCount(false)
-
-    }
+const sendItem = () => {
+    addProducts(itemCart)
+    console.log("add products ",products)
+}
 
 
     return(
@@ -40,16 +45,16 @@ export default function ItemDetail({products}){
         <div className="container mb-2 mt-2">
             <div className="row ">
                 <div className="col-6 detail text-center">
-                    <img className="img-fluid img-border" src={products.pictureURL} />
+                    <img className="img-fluid img-border" src={data.pictureURL} />
                 </div>
                 <div className="col-6 detail centrado justify-content-center text-center">
-                    <h1 className='w'>{products.title}</h1>
-                    <h5 className='w'>Descripción: {products.description}</h5>
-                    <h3 className='w'>${products.price}</h3>
-                    <h5 className='w'>Stock: {products.stock}</h5>
+                    <h1 className='w'>{data.title}</h1>
+                    <h5 className='w'>Descripción: {data.description}</h5>
+                    <h3 className='w'>${data.price}</h3>
+                    <h5 className='w'>Stock: {data.stock}</h5>
                     <div className='d-block'>
                     { handleItemCount ?
-                    <ItemCount onAdd={onAdd} stock={products.stock}/>
+                    <ItemCount onAdd={onAdd} stock={data.stock}/>
                     :
                     <></>
                     }

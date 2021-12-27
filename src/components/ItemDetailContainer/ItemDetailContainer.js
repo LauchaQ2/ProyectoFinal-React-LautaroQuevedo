@@ -12,7 +12,6 @@ import { apiURL } from '../../config';
 export default function ItemDetailContainer(){
 
 const {id} = useParams();
-console.log(id);
 
 const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
@@ -35,19 +34,10 @@ const [loader, setLoader] = useState(true)
     }, [])
 
 
-    console.log(products);
     return(
         
         <div className="container-fluid d-flex flex-wrap justify-content-center">
-          {
-                    loader
-                        ?
-                        <CircularProgress />
-                        :
-                        <>
-                            {<ItemDetail products={products}/>}
-                            </>
-          }
+          <ItemDetail data={products}/>
         </div>
     )
 }
