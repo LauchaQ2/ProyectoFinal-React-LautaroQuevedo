@@ -5,13 +5,16 @@ import CircularProgress from '@mui/material/CircularProgress';
 import CartContext from '../../context/CartContext';
 import Modal from 'react-bootstrap/Modal'
 import { Button } from '@mui/material';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
 export default function Cart(){
 
     const [total, setTotal] = useState([])
-    const { productCarts, clearCart} = useContext(CartContext)
+    const { productCarts, clearCart, removeItem} = useContext(CartContext)
+
+    
 
     const clear = () =>{
         clearCart();
@@ -60,6 +63,14 @@ export default function Cart(){
                             <td className='fontsize'>{productCart.title}</td>
                             <td className='fontsize'>${productCart.price * productCart.quantity}</td>
                             <td className='fontsize'>{productCart.quantity}</td>
+                            <td className='fontsize'>
+                            <Button onClick={() =>{
+                                        removeItem(productCart.id);
+                                        setTotal([]);
+                                    }} style={{background: "red"}} variant="contained">
+                              <RemoveIcon fontSize="small"/>
+                            </Button>
+                            </td>
                             </tr>
                         </tbody>
                         </>

@@ -4,6 +4,8 @@ import { Button } from '@mui/material';
 import CartContext from '../../context/CartContext';
 import Modal from 'react-bootstrap/Modal'
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Link } from "react-router-dom";
+
 
 export default function ModalCart({products}){
       
@@ -37,6 +39,9 @@ export default function ModalCart({products}){
                 )
             })}
             <Modal.Footer>
+                     <Link to={"/cart"}>
+                         <Button style={{background: "red"}} variant="contained">ir al carrito</Button>
+                    </Link>
                 <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
             </Modal.Footer>
     </div>
