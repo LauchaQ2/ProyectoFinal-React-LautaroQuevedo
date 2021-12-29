@@ -8,10 +8,13 @@ import ContactPage from '../../pages/ContactPage/ContactPage.js';
 import AboutUsPage from '../../pages/AboutUsPage/AboutUsPage.js';
 import ItemListContainer from '../ItemListContainer/ItemListContainer.js';
 import CartPage from '../../pages/CartPage/CartPage.js';
+import {CartProvider} from '../../context/CartContext';
+
 
 export default function AppRouter(){
     return(
         <BrowserRouter>
+            <CartProvider>
             <NavBar/>
                 <Routes>
                 <Route path="/category/:category" element={<ItemListContainer/>}/>
@@ -22,6 +25,7 @@ export default function AppRouter(){
                 <Route path="/" element={<HomePage/>}/>
                 <Route index element={<HomePage />}/> 
                 </Routes>
+                </CartProvider>
             <Footer/>
       </BrowserRouter>
     )

@@ -1,17 +1,37 @@
 import { createContext, useState } from "react";
+import { useParams } from 'react-router-dom';
 
 const CartContext = createContext();
 
 const CartProvider = ({children}) => {
-    const [products, setProducts] = useState([])
+    const [productCarts, setProducts] = useState([])
+    const [quant, setQuant] = useState();
 
-    const addProducts = (product) => {
-        setProducts([...products, product])
-    }
+    const isInCart = id => productCarts.some(productCart => productCart.id === id);
 
+    
+    const addProducts = (productCart, quantity) => {
+        if (isInCart(productCart.id)){
+            const newAddProducts = productCarts.map(currentElement=>{
+                if(currentElement.id === productCart.id){
+                    console.log("el current tiene",currentElement.quantity)
+            return{...currentElement, quantity: currentElement.quantity + quantity}                 
+        }else return currentElement
+                })
+            setProducts(newAddProducts)
+        }else{
+            setProducts(prev => [...prev, {...productCart, quantity}]);       }
+     }
+
+    const clearCart = () => setProducts([]);
+
+    const removeItem = (id) => setProducts(productCarts.filter(productCart=>productCart.id !==id));
     const data = {
-        products,
-        addProducts
+        clearCart,
+        setQuant,
+        productCarts,
+        addProducts,
+        removeItem
     }
     
     return(

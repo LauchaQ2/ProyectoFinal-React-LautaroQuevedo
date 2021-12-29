@@ -10,18 +10,18 @@ const CartWidget = () => {
     useEffect(() => {
         //console.log("products cartWidget" , products)
     })
-    const {products} = useContext(CartContext)
+    const {productCarts} = useContext(CartContext)
 
     const openCart = () => {
         setShowCart(!showCart)
     }
 
-    console.log("products desde agregados al carrito: ", products)
+    console.log("products desde agregados al carrito: ", productCarts)
 
     return(
         <>
         <ShoppingCartIcon onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
-        {showCart && <ModalCart products={products}/>}
+        {showCart && <ModalCart products={productCarts}/>}
         </>
     )
 }

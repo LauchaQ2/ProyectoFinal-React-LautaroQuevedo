@@ -1,9 +1,9 @@
 .carrito {
     position: absolute;
     z-index: 1;
-    width: 400px;
+    width: 600px;
     height: auto;
-    background: white;
+    background: black;
     right: 20px;
     top: 75px;
     padding: 10px 0px;
@@ -13,7 +13,8 @@
 }
 
 .carrito * {
-    color: black;
+    color: white;
+
 }
 
 .carrito .item-cart-list {
@@ -30,18 +31,35 @@
 }
 .item-cart-list p, .item-cart-list span{
     margin:0;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.item-cart-list p{
+    width: 120px;
+    justify-content: center;
 }
 
-.item-cart-img {
+.item-card-img {
     width: 80px;
     padding: 5px 0px;
 }
 
-.item-cart-img img {
+.item-card-img img {
     width: 100%;
 }
 
 .carrito {
     max-height: 300px;
     overflow-y: auto;
+}
+.item-button{
+    width: 40px;
+    display: block;
+}
+.btn{
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    margin-bottom: 1px;
 }

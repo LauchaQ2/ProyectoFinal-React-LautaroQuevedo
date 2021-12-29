@@ -7,7 +7,6 @@ import { apiURL } from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import '../CategoriesBanner/CategoriesBanner.css';
 import { Button } from '@mui/material';
 
 
@@ -28,7 +27,7 @@ export default function ItemListContainer(){
           setProducts(data.filter((data) => (category === 'all' || activeCategory === 'all') ? data : data.category === activeCategory))
           setTimeout( () => {
             setLoader(false)
-          }, 2000);
+          }, 500);
           
  
         })

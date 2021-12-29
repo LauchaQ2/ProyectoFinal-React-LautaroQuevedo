@@ -1,44 +1,35 @@
 import React, {useState, useContext} from 'react';
 import './ItemDetail.css';
-import imgProduct from '../../assets/fragile.svg'
 import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material';
 import {Link} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 import CartContext from '../../context/CartContext';
+import { useParams } from 'react-router-dom';
 
 
-export default function ItemDetail({data}){
-    console.log(data);
+export default function ItemDetail({ data }) {
+
+        const { addProducts , productCarts, setQuant} = useContext(CartContext)
+        console.log("data item: ", data)
+
+        const itemCart = {
+            title: data.title,
+            id: data.id,
+            price: data.price,
+            pictureURL: data.pictureURL,
+            quantity: 1,
+        }
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const [handleItemCount, sethandleItemCount] = useState(true)
     const handleShow = () => setShow(true);
-       
-    const [quantityItem,setQuantityItem] = useState(0)
-    const {addProducts, products} = useContext(CartContext)
-    const [itemCart,setItemCart]= useState(
-        {
-            id:data.id,
-            title:data.title,
-            img:data.pictureURL,
-            quantity:0,
-            price:data.price
-        }
-    )
-    console.log(itemCart);
 
-    const onAdd =(value) =>{
-        console.log("items add ",value)
-        itemCart.quantity=value
+
+    
+    const onAdd = (quantity) => {
+        addProducts(itemCart, quantity)
     }
-
-const sendItem = () => {
-    addProducts(itemCart)
-    console.log("add products ",products)
-}
-
 
     return(
 
@@ -53,14 +44,10 @@ const sendItem = () => {
                     <h3 className='w'>${data.price}</h3>
                     <h5 className='w'>Stock: {data.stock}</h5>
                     <div className='d-block'>
-                    { handleItemCount ?
-                    <ItemCount onAdd={onAdd} stock={data.stock}/>
-                    :
-                    <></>
-                    }
-                    <Button className="btn cart chart border" onClick={sendItem}>Agregar</Button>
+                    
+                    <ItemCount item={itemCart} initial={1} onAdd={onAdd} stock={data.stock}/>
                     <div>
-                    <Link to={`/cart`}>
+                    <Link to={"/cart"}>
                     <Button style={{background: "red"}} variant="contained">Finalizar mi compra</Button>
                     </Link>
                     </div>
@@ -74,7 +61,6 @@ const sendItem = () => {
                         <p>Código: {itemCart.id}</p>
                         <p>Precio unitario: {itemCart.price}</p>
                         <p>Cantidad: {itemCart.quantity}</p>
-                        <h4>Total: {itemCart.total}</h4>
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>

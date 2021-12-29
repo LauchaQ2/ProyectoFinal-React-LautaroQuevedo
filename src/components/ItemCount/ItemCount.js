@@ -1,33 +1,40 @@
 import React, {useState} from 'react';
 import '../ItemCount/ItemCount.css';
+import { Button } from '@mui/material';
 
-export default function ItemCount({stock, onAdd}){
+
+export default function ItemCount({stock, initial, onAdd}){
         
 
-        const [amount, setAmount] = useState(0);
 
-        const addAmount = () => {
-            if(amount<stock){
-                setAmount(amount + 1);
-                onAdd(amount + 1);
-            }
-            
+    const [counter,setCounter] = useState(initial);
+
+    const [total, setTotal] = useState();
+
+
+    
+    const addAmount = () => {
+        if (counter === stock){
+            return;
         }
-        const subAmount = () => {
-            if(amount>1){
-                setAmount(amount - 1);
-                onAdd(amount - 1);
-            }
-            
+        setCounter(counter + 1);
+    }
+    const subAmount = () => {
+        if (counter === 1){
+            return;
         }
+        setCounter(counter - 1);
+    }
+
 
         return(
             <div>
             <button onClick={subAmount} className="btn btn2 bg-light border">-</button>
-            <input type="text" className="btn btn1 bg-light border" readOnly value={amount}/>
+            <input type="text" className="btn btn1 bg-light border" readOnly value={counter}/>
             <button onClick={addAmount} className="btn btn2 bg-light border">+</button>
             <div className="justify-content-center input-group mt-2">
             </div>
+            <Button className="btn cart chart border" onClick={()=>onAdd(counter,total)}>Agregar</Button>
             </div>
         )
 }
