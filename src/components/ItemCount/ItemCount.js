@@ -9,8 +9,6 @@ export default function ItemCount({stock, initial, onAdd}){
 
     const [counter,setCounter] = useState(initial);
 
-    const [total, setTotal] = useState();
-
 
     
     const addAmount = () => {
@@ -34,7 +32,7 @@ export default function ItemCount({stock, initial, onAdd}){
             <button onClick={addAmount} className="btn btn2 bg-light border">+</button>
             <div className="justify-content-center input-group mt-2">
             </div>
-            <Button className="btn cart chart border" onClick={()=>onAdd(counter,total)}>Agregar</Button>
+            <Button className="btn cart chart border" onClick={()=>onAdd(counter)}>Agregar</Button>
             </div>
         )
 }

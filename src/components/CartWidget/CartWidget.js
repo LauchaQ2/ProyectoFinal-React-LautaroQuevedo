@@ -10,7 +10,12 @@ const CartWidget = () => {
     useEffect(() => {
         //console.log("products cartWidget" , products)
     })
-    const {productCarts} = useContext(CartContext)
+    const {productCarts, totalPrice} = useContext(CartContext)
+
+    const totalProducts = productCarts.map(productCart => productCart.quantity).reduce((prev, curr) => prev + curr, 0);
+
+    
+
 
     const openCart = () => {
         setShowCart(!showCart)
@@ -21,7 +26,8 @@ const CartWidget = () => {
     return(
         <>
         <ShoppingCartIcon onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
-        {showCart && <ModalCart products={productCarts}/>}
+        {showCart && <ModalCart total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
+        <span className="number-cart">{totalProducts}</span>
         </>
     )
 }

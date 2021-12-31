@@ -12,9 +12,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export default function Cart(){
 
     const [total, setTotal] = useState([])
-    const { productCarts, clearCart, removeItem} = useContext(CartContext)
+    const { productCarts, clearCart, removeItem, totalPrice} = useContext(CartContext)
 
-    
 
     const clear = () =>{
         clearCart();
@@ -77,12 +76,12 @@ export default function Cart(){
                 )
             })}
             </table>}
-            {total.length === 0 ?
+            {productCarts.length === 0 ?
             <div className='container-fluid d-flex justify-content-start'>
             </div>
             :
             <div className='container-fluid d-flex justify-content-around'>
-                <h3>Total: ${total.reduce((acc, el) => acc + el)}</h3>
+                <h3>Total: ${totalPrice}</h3>
                 <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
             </div>
             }

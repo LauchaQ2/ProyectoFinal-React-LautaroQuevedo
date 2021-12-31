@@ -20,8 +20,13 @@ const CartProvider = ({children}) => {
                 })
             setProducts(newAddProducts)
         }else{
-            setProducts(prev => [...prev, {...productCart, quantity}]);       }
+            setProducts(prev => [...prev, {...productCart, quantity}]);   
+            }
      }
+
+     const totalPrice = productCarts.reduce(function (acc, curr) {
+        return acc + curr.quantity * curr.price;
+    },0);
 
     const clearCart = () => setProducts([]);
 
@@ -31,7 +36,8 @@ const CartProvider = ({children}) => {
         setQuant,
         productCarts,
         addProducts,
-        removeItem
+        removeItem,
+        totalPrice
     }
     
     return(

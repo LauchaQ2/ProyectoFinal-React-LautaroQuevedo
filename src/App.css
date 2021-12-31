@@ -1,8 +1,10 @@
 .App {
   width: 100%;
-  margin: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-}
+  margin: 0px 0px 0px 0px!important;
+  padding: 0px 0px 0px 0px!important;
+  overflow-x: hidden;
+  font-family: 'Antonio', sans-serif;}
+@import url('https://fonts.googleapis.com/css2?family=Antonio&display=swap');
 .App-logo {
   height: 40vmin;
   pointer-events: none;

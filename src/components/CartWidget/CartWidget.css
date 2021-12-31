@@ -45,3 +45,14 @@
     max-height: 300px;
     overflow-y: auto;
 }
+.number-cart{
+    width: 23px;
+    height: 23px;
+    background-color: red;
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 0;
+}

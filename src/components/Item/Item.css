@@ -32,3 +32,9 @@ span.stock-text {
     border-radius: 30px;
     padding: 5px;
 }
+.button{
+    width: auto;
+    border: 1px solid black;
+    background-color: red!important;
+    color: white!important;
+}

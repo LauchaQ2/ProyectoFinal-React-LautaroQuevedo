@@ -38,12 +38,17 @@ export default function ModalCart({products}){
                     </div>
                 )
             })}
-            <Modal.Footer>
+            { products.length === 0 ?
+                <></>
+            :
+            <div className='container-fluid d-flex justify-content-around mt-2'>
                      <Link to={"/cart"}>
                          <Button style={{background: "red"}} variant="contained">ir al carrito</Button>
                     </Link>
                 <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
-            </Modal.Footer>
+                </div>
+            }
+            
     </div>
         )
 }
