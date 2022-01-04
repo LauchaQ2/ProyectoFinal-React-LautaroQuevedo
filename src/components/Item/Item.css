@@ -20,8 +20,10 @@
     flex-wrap: wrap;
     margin-bottom: 0px;
     color:black;
+    font-size: 20px!important;
+
 }
-h5{
+h4{
     color:black;
 }
 
@@ -33,8 +35,12 @@ span.stock-text {
     padding: 5px;
 }
 .button{
-    width: auto;
     border: 1px solid black;
     background-color: red!important;
     color: white!important;
+}
+.button-buy{
+    font-size: 1.5vw!important;
+    width: auto!important;
+    height: auto!important;
 }

@@ -30,11 +30,11 @@ export default function Item({data}){
             <Link to={`/product/${data.id}`}>
             <h5 className="title">{data.title}</h5>
             <img className="img-item" src={data.pictureURL} alt={data.title} />
-            <h5>${data.price}</h5>
+            <h4>${data.price}</h4>
             </Link>
             <ItemCount item={itemCart} initial={1} onAdd={onAdd} stock={data.stock}/>
             <Link to={`/product/${data.id}`}>
-            <Button className="btn button">Ver detalle</Button>
+            <Button className="btn button button-buy">Ver detalle</Button>
             </Link>
 
         </div>

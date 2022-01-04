@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal'
 import CartContext from '../../context/CartContext';
 import { useParams } from 'react-router-dom';
-
+import Slider from '../../components/Slider/Slider'
 
 export default function ItemDetail({ data }) {
 
@@ -47,13 +47,14 @@ export default function ItemDetail({ data }) {
                     <ItemCount item={itemCart} initial={1} onAdd={onAdd} stock={data.stock}/>
                     <div>
                     <Link to={"/cart"}>
-                    <Button style={{background: "red"}} variant="contained">Finalizar mi compra</Button>
+                    <Button className='button-buy' style={{background: "red"}} variant="contained">Finalizar mi compra</Button>
                     </Link>
                     </div>
                     </div>
                     
                 </div>
             </div>
+            <Slider/>
         </div>
     )
 }

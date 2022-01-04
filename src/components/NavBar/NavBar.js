@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../../assets/YoTomo/logo.svg';
@@ -10,25 +10,24 @@ import CartWidget from '../CartWidget/CartWidget';
 import '../NavBar/NavBar.css';
 import ThemeContext from '../../context/ThemeContext';
 import CartContext from '../../context/CartContext';
-
+import MenuIcon from '@mui/icons-material/Menu';
+import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function NavBar() {
   const {theme, changeTheme} = useContext(ThemeContext);
   const {products, showProducts} = useContext(CartContext);
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    
-      <Navbar bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
-      <Container fluid>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          <Link to="/">
-          <img id="logo" src={logo} />
-          </Link>
-          </Typography>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <>
+      <Offcanvas className="offcanvas" show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <Link to="/">
             <Button style={{color: "#000000"}}>Inicio</Button>
           </Link>
@@ -42,7 +41,20 @@ export default function NavBar() {
             <Button style={{color: "#000000"}}>Nosotros</Button>
           </Link>
           </ul>
-          </Navbar.Collapse>
+
+        </Offcanvas.Body>
+      </Offcanvas>
+
+      <Navbar bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
+      <Container fluid>
+      <Button variant="primary" onClick={handleShow}>
+       <MenuIcon />
+       </Button>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/">
+          <img id="logo" src={logo} />
+          </Link>
+          </Typography>
           <Button style={{color: "#000000"}}>
           <CartWidget/>
           </Button>
@@ -50,6 +62,10 @@ export default function NavBar() {
         </Container>
         </Navbar>
     
+    
+</>
+
+
   );
 }
 /*

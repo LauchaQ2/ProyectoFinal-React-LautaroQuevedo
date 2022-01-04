@@ -25,6 +25,9 @@ body{
     flex-grow: 1;
     content: '';
 }
+.ml{
+    margin-left: 10px;
+}
 .mr-5{
     margin-right: 50px;
 }

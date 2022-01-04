@@ -19,6 +19,9 @@ const CartWidget = () => {
 
     const openCart = () => {
         setShowCart(!showCart)
+        setTimeout( () => {
+            setShowCart(!showCart)
+          }, 100);
     }
 
     console.log("products desde agregados al carrito: ", productCarts)
@@ -26,7 +29,7 @@ const CartWidget = () => {
     return(
         <>
         <ShoppingCartIcon onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
-        {showCart && <ModalCart total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
+        {showCart && <ModalCart showCart={showCart} total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
         <span className="number-cart">{totalProducts}</span>
         </>
     )

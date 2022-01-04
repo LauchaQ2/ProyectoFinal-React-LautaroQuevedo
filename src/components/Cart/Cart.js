@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import './Cart.css';
 import { Link } from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -61,7 +62,7 @@ export default function Cart(){
                             </td>
                             <td className='fontsize'>{productCart.title}</td>
                             <td className='fontsize'>${productCart.price * productCart.quantity}</td>
-                            <td className='fontsize'>{productCart.quantity}</td>
+                            <td className='fontsize'>Cant: {productCart.quantity}</td>
                             <td className='fontsize'>
                             <Button onClick={() =>{
                                         removeItem(productCart.id);
@@ -82,9 +83,13 @@ export default function Cart(){
             :
             <div className='container-fluid d-flex justify-content-around'>
                 <h3>Total: ${totalPrice}</h3>
+                
+                <Button style={{background: "red"}} variant="contained">COMPRAR</Button>
+                
                 <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
             </div>
             }
+           
         </div>
     )
 }

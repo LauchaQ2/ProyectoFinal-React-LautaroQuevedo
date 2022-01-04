@@ -40,12 +40,14 @@ export default function ItemListContainer(){
               <h2 className='titlehome text-left mb-2'>PRODUCTOS</h2>
             </div>
             <div className="col-md-6 d-flex align-items-center">
-              <h4 className='text-left mb-2 mr-5'>CATEGORÍAS</h4>
+              <h4 className='text-left mb-2 mr-5 ml'>CATEGORÍAS</h4>
+              <div className='d-flex flex-wrap'>
               <h6 className='text-left mb-2 mr-3'>
               <Link style={{color: "#000000"}} onClick={()=>{setActiveCategory('all')}} to={`/category/all`}>
               TODOS
               </Link>
               </h6>
+
               {
                 categories.map((category) => {
                     return(
@@ -64,7 +66,7 @@ export default function ItemListContainer(){
         
                 })
             }
-                
+            </div>   
             </div>
           </div>
             {

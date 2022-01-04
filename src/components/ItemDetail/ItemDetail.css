@@ -25,8 +25,14 @@ h1{
     color: red;
 }
 .detail h5{
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 .cart{
    color: white!important;
+}
+.button-buy{
+    font-size: 1.5vw!important;
+    width: auto!important;
+    height: auto;
+    padding: 1px;
 }
