@@ -10,7 +10,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function ModalCart({products,showCart}){
       
-    const {clearCart,removeItem, totalPrice} = useContext(CartContext)
+    const {clearCart,removeItem, totalPrice,open, setOpen} = useContext(CartContext)
 
     const totalProducts = products.map(product => product.quantity).reduce((prev, curr) => prev + curr, 0);
    // const totalPrice = products.map(product => product.price).reduce((prev, curr) => prev + curr, 0);
@@ -20,19 +20,22 @@ export default function ModalCart({products,showCart}){
     }
     const [show, setShow] = useState(showCart);
 
-    const handleClose = () => setShow(!showCart);
+    const handleClose = () => {
+        setOpen(!open);
+        console.log(showCart)
+    }
     const handleShow = () => setShow(true);
   
     
     
     return(
 
-    
-        <Offcanvas className="offcanvas-carrito" show={show} onHide={handleClose}>
-        <Offcanvas.Header className='d-flex justify-content-between shadow p-3 mb-5 bg-body rounded' closeButton>
-         <p className='text-center mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
-        </Offcanvas.Header>
-        <Offcanvas.Body className='d'>
+    <div className='modalCart'>
+        <div className='d-flex header-modal justify-content-between align-content-center mb-2 p-3 bg-body rounded'>
+         <p className='text-center d-flex align-items-center mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
+         <button className='btn' onClick={handleClose}>X</button>
+        </div>
+        <div>
         {products.map(product => {
                 return(
                     <div className='container-fluid d-flex justify-content-between align-items-center' key={product.id}>
@@ -49,17 +52,17 @@ export default function ModalCart({products,showCart}){
             { products.length === 0 ?
                 <></>
             :
-            <div className='container-fluid d-flex justify-content-around align-items-center mt-2'>
+            <div className='container-fluid d-flex justify-content-around align-items-center mb-3 mt-2'>
             <h6 className='total-style'>Total: {totalPrice}</h6>
                      <Link to={"/cart"}>
-                         <Button className='button-cart' style={{background: "red"}} variant="contained">COMPRAR</Button>
+                         <Button className='button-cart' onClick={handleClose} style={{background: "red"}} variant="contained">COMPRAR</Button>
                     </Link>
                 <Button className='button-cart' onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
                 </div>
             }
+            </div>
 
-        </Offcanvas.Body>
-      </Offcanvas>
+            </div>
         )
 }
 

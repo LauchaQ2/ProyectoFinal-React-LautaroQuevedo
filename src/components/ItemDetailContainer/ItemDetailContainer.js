@@ -8,6 +8,9 @@ import Grid from '@mui/material/Grid';
 import Col from 'react-bootstrap/Col';
 import { useParams } from 'react-router-dom';
 import { apiURL } from '../../config';
+import db from '../../firebaseconfig';
+import { doc, getDoc } from 'firebase/firestore';
+
 
 export default function ItemDetailContainer(){
 
@@ -16,22 +19,29 @@ const {id} = useParams();
 const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
     
+    async function getProducts(db){
+      const docRef = doc(db, "productos", id);
+    const docSnap = await getDoc(docRef);
+    
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      let producto = docSnap.data();
+      producto.id = docSnap.id;
+      setProducts(producto);
+      setTimeout( () => {
+        setLoader(false)
+      }, 500);
+      return producto;
+    } else {
+      console.log("No such document!");
+    }
+    }
+    
+
+
     useEffect(() => {
-        fetch(apiURL)
-        .then(response =>{
-          return response.json();
-        })
-        .then(resultsProducts =>{
-          resultsProducts.filter( resultProduct =>{
-            if (resultProduct.id === id){
-              setProducts(resultProduct)
-            }
-          })
-          setTimeout( () => {
-            setLoader(false)
-          }, 2000);
-        })
-    }, [])
+      getProducts(db)
+    }, [id])
 
 
     return(

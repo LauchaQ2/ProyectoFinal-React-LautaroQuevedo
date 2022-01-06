@@ -42,7 +42,6 @@ export default function Cart(){
         <table class="table">
         <thead>
             <tr>
-                <th scope="col">#id</th>
                 <th className='fontsize' scope="col"></th>
                 <th className='fontsize' scope="col">Nombre</th>
                 <th className='fontsize' scope="col">Precio</th>
@@ -54,7 +53,6 @@ export default function Cart(){
                     <>                 
                         <tbody>
                             <tr>
-                            <th scope="row">{productCart.id}</th>
                             <td className='img-card'>
                             <Link to={`/product/${productCart.id}`}>
                             <img className='img-item-cart' src={productCart.pictureURL} alt="imagen del producto" />

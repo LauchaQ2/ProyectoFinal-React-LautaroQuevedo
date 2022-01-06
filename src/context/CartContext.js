@@ -6,6 +6,7 @@ const CartContext = createContext();
 const CartProvider = ({children}) => {
     const [productCarts, setProducts] = useState([])
     const [quant, setQuant] = useState();
+    const [open, setOpen] = useState(false);
 
     const isInCart = id => productCarts.some(productCart => productCart.id === id);
 
@@ -37,7 +38,9 @@ const CartProvider = ({children}) => {
         productCarts,
         addProducts,
         removeItem,
-        totalPrice
+        totalPrice,
+        open, 
+        setOpen
     }
     
     return(

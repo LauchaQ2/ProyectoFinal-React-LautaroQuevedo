@@ -108,3 +108,21 @@
     height: 3.38vh;
     max-height: 4.38vh;
 }
+.modalCart{
+    z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    transition: 0.7s;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.header-modal{
+    border-bottom: 1px solid black;
+    height: auto;
+}

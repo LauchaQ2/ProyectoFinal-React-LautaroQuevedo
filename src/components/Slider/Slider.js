@@ -3,11 +3,30 @@ import Carousel from 'react-elastic-carousel';
 import { apiURL } from '../../config';
 import '../Slider/Slider.css'
 import Item from '../Item/Item.js';
+import db from '../../firebaseconfig';
+import { collection, getDocs } from 'firebase/firestore';
+import {Link} from 'react-router-dom';
+
 
 
 export default function Slider(){
 
     const [products, setProducts] = useState([])
+
+    async function getProducts(db){
+      const productosCol = collection(db, 'productos');
+      const productosSnapshot = await getDocs(productosCol);
+      const productosList = productosSnapshot.docs.map(doc => {
+        let producto = doc.data();
+        producto.id = doc.id;
+       return producto
+      });
+      console.log(productosList)
+    return productosList;
+   }
+
+
+
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
@@ -19,10 +38,7 @@ export default function Slider(){
       ]
 
     useEffect(() => {
-        fetch(apiURL)
-        .then(response =>{
-          return response.json();
-        })
+      getProducts(db)
         .then(data =>{
           setProducts(data)
         })
@@ -36,6 +52,7 @@ export default function Slider(){
         {products.map(product => {
                                               return (
                                               <Item data={product} />
+
                                               )
                                               }
                                   )
