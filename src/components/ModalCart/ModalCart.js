@@ -55,7 +55,7 @@ export default function ModalCart({products,showCart}){
             <div className='container-fluid d-flex justify-content-around align-items-center mb-3 mt-2'>
             <h6 className='total-style'>Total: {totalPrice}</h6>
                      <Link to={"/cart"}>
-                         <Button className='button-cart' onClick={handleClose} style={{background: "red"}} variant="contained">COMPRAR</Button>
+                         <Button className='button-cart' onClick={handleClose} style={{background: "red"}} variant="contained">ir al carrito</Button>
                     </Link>
                 <Button className='button-cart' onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
                 </div>

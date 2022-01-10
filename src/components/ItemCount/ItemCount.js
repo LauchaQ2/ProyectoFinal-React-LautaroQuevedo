@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import '../ItemCount/ItemCount.css';
 import { Button } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
 export default function ItemCount({stock, initial, onAdd}){
@@ -31,7 +32,9 @@ export default function ItemCount({stock, initial, onAdd}){
             <input type="text" className="btn btn1 bg-light border" readOnly value={counter}/>
             <button onClick={addAmount} className="btn btn2 bg-light border">+</button>
             <div className="justify-content-center input-group mt-1 mb-1">
-            <Button className="btn cart chart border" onClick={()=>onAdd(counter)}>Agregar</Button>
+            <Button className="btn cart chart border" onClick={()=>onAdd(counter)}>
+            <ShoppingCartIcon sx={{ color: "#000" }} fontSize="medium" />
+            </Button>
             </div>
             </div>
         )

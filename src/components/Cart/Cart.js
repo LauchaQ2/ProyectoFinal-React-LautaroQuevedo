@@ -7,14 +7,28 @@ import CartContext from '../../context/CartContext';
 import Modal from 'react-bootstrap/Modal'
 import { Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
-
+import Checkout from '../Checkout/Checkout';
+import ModalCart from '../ModalCart/ModalCart'
 
 
 export default function Cart(){
 
     const [total, setTotal] = useState([])
-    const { productCarts, clearCart, removeItem, totalPrice} = useContext(CartContext)
+    const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal} = useContext(CartContext)
 
+    const [open, setOpen] = useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+  
+      const handleClose = () => {
+        setOpen(false);
+      };
+
+    const handleCheckout = () =>{
+        setCheckOutModal(!checkOutModal)
+        console.log(checkOutModal)
+    }
 
     const clear = () =>{
         clearCart();
@@ -82,12 +96,15 @@ export default function Cart(){
             <div className='container-fluid d-flex justify-content-around'>
                 <h3>Total: ${totalPrice}</h3>
                 
-                <Button style={{background: "red"}} variant="contained">COMPRAR</Button>
-                
+                <Button onClick={handleClickOpen} style={{background: "red"}} variant="contained">COMPRAR</Button>
+                <Checkout
+                open={open} 
+                handleClose={handleClose} 
+                total={totalPrice}
+            />
                 <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
             </div>
             }
-           
         </div>
     )
 }

@@ -1,0 +1,30 @@
+*{
+    font-family: "Roboto";
+}
+.container-info{
+    background-color: black;
+    color: white;
+    width: 80%;
+    height: 100px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+.logo-wp{
+    width: 30px;
+    height: 30px;
+}
+.box1{
+    height: 100%;
+    width: 100%;
+}
+.carousel{
+    height: auto!important;
+}
+.box{
+    background-color: black;
+    color: white;
+}
+.box2{
+    width: 100%;
+}

@@ -9,15 +9,17 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import Banner from '../Banner/Banner'
 import getProducts from '../../FirebaseRequests/GetProductsCollection';
+import InfoBanner from '../InfoBanner/InfoBanner';
 
 export default function ItemListContainer(){
     const {category} = useParams();
     const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState('all')
-    const categories = ['vino', 'cerveza']
+    const categories = ['vino', 'cerveza', 'licor']
 
-      
+    
+
     useEffect(() => {
       getProducts
         .then(data =>{
@@ -33,6 +35,7 @@ export default function ItemListContainer(){
     return(
 
       <><Banner />
+      <InfoBanner/>
       <div>
         <div className='row'>
           <div className="col-md-6 d-flex align-items-center">

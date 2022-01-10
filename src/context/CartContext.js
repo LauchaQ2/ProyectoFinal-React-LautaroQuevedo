@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 
 const CartContext = createContext();
@@ -7,6 +7,9 @@ const CartProvider = ({children}) => {
     const [productCarts, setProducts] = useState([])
     const [quant, setQuant] = useState();
     const [open, setOpen] = useState(false);
+    const [checkOutModal, setCheckOutModal] = useState(false);
+    
+    
 
     const isInCart = id => productCarts.some(productCart => productCart.id === id);
 
@@ -40,7 +43,9 @@ const CartProvider = ({children}) => {
         removeItem,
         totalPrice,
         open, 
-        setOpen
+        setOpen,
+        checkOutModal, 
+        setCheckOutModal
     }
     
     return(
