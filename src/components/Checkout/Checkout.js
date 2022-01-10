@@ -28,11 +28,13 @@ export default function Checkout({open, handleClose, products, total}) {
     }
 
     const sendOrder = () => {
+        let fechaActual = new Date();
         let order = {}
         order.buyer = formData
         order.items = productCarts
         order.total = totalPrice
-        
+        order.date = fechaActual
+
         pushOrder(order)
     }
 
