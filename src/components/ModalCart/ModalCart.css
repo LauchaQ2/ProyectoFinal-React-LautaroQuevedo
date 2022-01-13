@@ -99,6 +99,7 @@
     font-size: 2vw!important;
     height: 3.38vw;
     max-height: 4.38vw;
+    background-color: rgb(53, 53, 53)!important;
 }
 .title-cart{
     font-size: 2.83vw;
@@ -107,6 +108,7 @@
     width: 3em!important;
     height: 3.38vh;
     max-height: 4.38vh;
+    background-color: rgb(53, 53, 53)!important;
 }
 .modalCart{
     z-index: 10000;
@@ -115,14 +117,18 @@
     left: 0;
     padding: 0;
     margin: 0;
-    width: 100%;
+    width: 80%;
     background-color: #fff;
     transition: 0.7s;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+    border: 1px solid black
 }
 .header-modal{
     border-bottom: 1px solid black;
     height: auto;
+}
+.border-box{
+    border-bottom: 1px solid black;
 }

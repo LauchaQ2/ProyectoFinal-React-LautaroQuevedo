@@ -47,7 +47,7 @@ export default function ItemDetail({ data }) {
                     <ItemCount item={itemCart} initial={1} onAdd={onAdd} stock={data.stock}/>
                     <div>
                     <Link to={"/cart"}>
-                    <Button className='button-buy' style={{background: "red"}} variant="contained">Finalizar mi compra</Button>
+                    <Button className='button-buy' variant="contained">Finalizar mi compra</Button>
                     </Link>
                     </div>
                     </div>

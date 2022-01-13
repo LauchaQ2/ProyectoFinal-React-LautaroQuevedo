@@ -14,7 +14,7 @@ import ModalCart from '../ModalCart/ModalCart'
 export default function Cart(){
 
     const [total, setTotal] = useState([])
-    const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal} = useContext(CartContext)
+    const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal, addItem} = useContext(CartContext)
 
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
@@ -76,11 +76,15 @@ export default function Cart(){
                             <td className='fontsize'>${productCart.price * productCart.quantity}</td>
                             <td className='fontsize'>Cant: {productCart.quantity}</td>
                             <td className='fontsize'>
-                            <Button onClick={() =>{
-                                        removeItem(productCart.id);
+                            <Button
+                             onClick={() =>{
+                                        removeItem(productCart.id,productCart.quantity)
                                         setTotal([]);
                                     }} style={{background: "red"}} variant="contained">
                               <RemoveIcon fontSize="small"/>
+                            </Button>
+                            <Button className='button-remove' onClick={()=>addItem(productCart.id,productCart.quantity)} style={{background: "red"}} variant="contained">
+                            +
                             </Button>
                             </td>
                             </tr>

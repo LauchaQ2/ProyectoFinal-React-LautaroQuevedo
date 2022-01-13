@@ -6,10 +6,10 @@
     color: white;
     align-items: center;
     display: flex;
-    justify-content: center;
-    font-size: 50px;
+    justify-content: space-around;
     width: 100%;
 }
 .text-footer{
-    font-size: 3vw;
+    list-style: none;
+    text-align: left;
 }

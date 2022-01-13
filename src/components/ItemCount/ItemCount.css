@@ -19,9 +19,21 @@
     text-align: center!important;
     font-size: 1.5vw!important;
     font-weight: bold!important;
-    background-color: red!important;
+    background-color: rgb(53, 53, 53)!important;
     color: white!important;
 }
 h5{
     font-size: 2vw;
 }
+.added-to-cart{
+    position: absolute;
+    z-index: 1000;
+    background-color: rgb(53, 53, 53)!important;
+    left: 70px;
+    font-size: 15px;
+    width: auto;
+    border-radius: 5px;
+    padding: 3px;
+}
+.hidden { opacity: 0; transition: opacity 2s linear;}
+.visible { opacity: 1; transition: opacity 1s linear;}

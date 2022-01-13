@@ -33,7 +33,9 @@ return(
             <div className='row box1 d-flex flex-wrap'>
                 <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <img className='logo-wp' src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
+                        <a target="_blank" href='https://walink.co/63cb67'>
+                            <img className='logo-wp' src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
+                        </a>
                     </div>
                     <div className='text-center mt-2'>
                         <p className='text-center d-flex align-items-center'>¿Tenés una consulta?</p>
@@ -61,8 +63,9 @@ return(
             </div>
         </div>
     </div> :
-        <Carousel focusOnSelect={true} className="carousel" itemsToShow={1}>
+        <Carousel enableAutoPlay autoPlaySpeed={5000} pagination={false} focusOnSelect={true} className="carousel mt-4  mb-4" itemsToShow={1}>
             <div className='box2'>
+            <a target="_blank" href='https://walink.co/63cb67'>
             <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
                         <img className='logo-wp' src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
@@ -71,7 +74,9 @@ return(
                         <p className='text-center d-flex align-items-center'>¿Tenés una consulta?</p>
                         <p className='text-center d-flex align-items-center'>Envianos tu mensaje..</p>
                     </div>
-                </div>
+                
+            </div>
+            </a>
             </div>
             <div className='box2'>
             <div className='col-sm-4 box d-flex justify-content-around align-content-center'>

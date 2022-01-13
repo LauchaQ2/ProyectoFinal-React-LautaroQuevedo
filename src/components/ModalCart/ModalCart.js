@@ -10,7 +10,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 
 export default function ModalCart({products,showCart}){
       
-    const {clearCart,removeItem, totalPrice,open, setOpen} = useContext(CartContext)
+    const {clearCart,removeItem, totalPrice,open, setOpen, addItem} = useContext(CartContext)
 
     const totalProducts = products.map(product => product.quantity).reduce((prev, curr) => prev + curr, 0);
    // const totalPrice = products.map(product => product.price).reduce((prev, curr) => prev + curr, 0);
@@ -25,7 +25,8 @@ export default function ModalCart({products,showCart}){
         console.log(showCart)
     }
     const handleShow = () => setShow(true);
-  
+    
+
     
     
     return(
@@ -38,13 +39,16 @@ export default function ModalCart({products,showCart}){
         <div>
         {products.map(product => {
                 return(
-                    <div className='container-fluid d-flex justify-content-between align-items-center' key={product.id}>
+                    <div className='container-fluid border-box d-flex justify-content-between align-items-center' key={product.id}>
                         <img className="img-fluid img-cart" src={product.pictureURL} alt="imagen del producto" />
                         <p className='fontsizeCart bold'>{product.title}</p>
                         <p className='fontsizeCart'>${product.quantity*product.price}</p>
                         <span className='fontsizeCart'>Cant: {product.quantity}</span>
-                        <Button className='button-remove' onClick={()=>removeItem(product.id)} style={{background: "red"}} variant="contained">
+                        <Button className='button-remove' onClick={()=>removeItem(product.id,product.quantity)} style={{background: "red"}} variant="contained">
                         <RemoveIcon fontSize="small"/>
+                        </Button>
+                        <Button className='button-remove' onClick={()=>addItem(product.id,product.quantity)} style={{background: "red"}} variant="contained">
+                        +
                         </Button>
                     </div>
                 )
@@ -53,7 +57,7 @@ export default function ModalCart({products,showCart}){
                 <></>
             :
             <div className='container-fluid d-flex justify-content-around align-items-center mb-3 mt-2'>
-            <h6 className='total-style'>Total: {totalPrice}</h6>
+            <h6 className='total-style'>Total: ${totalPrice}</h6>
                      <Link to={"/cart"}>
                          <Button className='button-cart' onClick={handleClose} style={{background: "red"}} variant="contained">ir al carrito</Button>
                     </Link>

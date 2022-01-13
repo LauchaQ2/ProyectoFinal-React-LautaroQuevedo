@@ -5,10 +5,8 @@ const CartContext = createContext();
 
 const CartProvider = ({children}) => {
     const [productCarts, setProducts] = useState([])
-    const [quant, setQuant] = useState();
     const [open, setOpen] = useState(false);
     const [checkOutModal, setCheckOutModal] = useState(false);
-    
     
 
     const isInCart = id => productCarts.some(productCart => productCart.id === id);
@@ -24,7 +22,7 @@ const CartProvider = ({children}) => {
                 })
             setProducts(newAddProducts)
         }else{
-            setProducts(prev => [...prev, {...productCart, quantity}]);   
+            setProducts(prev => [...prev, {...productCart, quantity}]);
             }
      }
 
@@ -33,11 +31,30 @@ const CartProvider = ({children}) => {
     },0);
 
     const clearCart = () => setProducts([]);
+    
+    const removeItem = (id, quantity) => {
+        const ProductExist = productCarts.find(productCart=>productCart.id === id)
+        if (ProductExist.quantity === 1){
+        setProducts(productCarts.filter(productCart=>productCart.id !==id));
+    }else{
+        setProducts(productCarts.map(productCart => productCart.id === id 
+            ? {...ProductExist, quantity: ProductExist.quantity - 1}:
+            productCart))
+    }
+    }
 
-    const removeItem = (id) => setProducts(productCarts.filter(productCart=>productCart.id !==id));
+    const addItem = (id, quantity) => {
+        const ProductExist = productCarts.find(productCart=>productCart.id === id)
+        if (ProductExist.quantity > 0){
+            setProducts(productCarts.map(productCart => productCart.id === id 
+                ? {...ProductExist, quantity: ProductExist.quantity + 1}:
+                productCart))
+    }
+    }
+
+
     const data = {
         clearCart,
-        setQuant,
         productCarts,
         addProducts,
         removeItem,
@@ -45,7 +62,8 @@ const CartProvider = ({children}) => {
         open, 
         setOpen,
         checkOutModal, 
-        setCheckOutModal
+        setCheckOutModal,
+        addItem
     }
     
     return(

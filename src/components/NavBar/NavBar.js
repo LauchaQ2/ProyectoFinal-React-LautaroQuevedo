@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import logo from '../../assets/YoTomo/logo.svg';
@@ -17,7 +17,16 @@ export default function NavBar() {
   const {theme, changeTheme} = useContext(ThemeContext);
   const {products, showProducts} = useContext(CartContext);
   const [show, setShow] = useState(false);
+  const [scrollFixed, setScrollFixed] = useState();
 
+  useEffect(()=>{
+    const handleScrollY = () =>{
+      setScrollFixed(window.scrollY)
+    }
+    window.addEventListener("scroll", handleScrollY);
+  },[])
+
+  console.log(scrollFixed);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -45,7 +54,7 @@ export default function NavBar() {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <Navbar bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
+      <Navbar fixed={scrollFixed>50 ? "top" : null} bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
       <Container fluid>
       <Button variant="primary" onClick={handleShow}>
        <MenuIcon />

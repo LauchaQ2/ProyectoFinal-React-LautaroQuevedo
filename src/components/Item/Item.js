@@ -36,7 +36,6 @@ export default function Item({data}){
             <Link to={`/product/${data.id}`}>
             <Button className="btn button button-buy">Ver detalle</Button>
             </Link>
-
         </div>
     )
 }

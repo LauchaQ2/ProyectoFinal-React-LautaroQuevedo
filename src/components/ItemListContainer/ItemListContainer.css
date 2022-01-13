@@ -15,7 +15,12 @@ body{
     background-repeat: no-repeat;
     margin-bottom: 50px;
 }
-
+h1,h2{
+    font-weight:900;
+}
+h6{
+    font-weight: bold;
+}
 .titlehome{
     position: relative;
     bottom: 5px;

@@ -54,9 +54,16 @@ export default function Checkout({open, handleClose, products, total}) {
             open={open} 
             className="modal-contact-data"
         >
-            {orderId != null ? <h2>La orden se genero con exito {orderId}</h2> :
+            {orderId != null ? 
+                <DialogContent>
+                            <Box className="form-container">
+                            <h2>La orden se generó con éxito {orderId}</h2>
+                            <h4>Te hemos enviado a tu correo información de la compra</h4>
+                            </Box>
+                    </DialogContent>
+             :
                 <>
-                    <DialogTitle>Completa tus datos</DialogTitle>
+                    <DialogTitle>Completa tus datos para finalizar tu compra</DialogTitle>
                         <DialogContent>
                             <Box component="form" noValidate autoComplete="off" className="form-container">
                                 <TextField label="Nombre" name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
