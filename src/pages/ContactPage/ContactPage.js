@@ -1,17 +1,29 @@
-import React from 'react-dom';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactPage(){
-    return(
-                <div className='container-fluid'>
-        <h1 className='text-center containerBanner'>PAGINA DE CONTACTO</h1>
-        <p className='text-center p-4'> Non reprehenderit do irure commodo excepteur proident. Ullamco ullamco culpa consectetur esse et commodo ea ipsum mollit aute consectetur occaecat. Cillum id elit adipisicing ipsum tempor laborum irure adipisicing eiusmod officia.
+  const form = useRef();
 
-Sit voluptate eu exercitation sint esse mollit officia ipsum est laborum nulla culpa commodo. Quis minim amet Lorem cupidatat Lorem ullamco incididunt velit. Elit eiusmod ut cupidatat incididunt laboris ullamco. Aute laborum veniam eiusmod officia eiusmod consectetur esse irure. Laborum dolor qui do esse anim cupidatat.
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-Ipsum magna minim incididunt proident incididunt laborum aliquip reprehenderit aliqua ullamco. Adipisicing sunt minim esse minim incididunt ex sint eu ea proident veniam aliquip sunt duis. Elit laboris in ad culpa aute ex ad. Fugiat proident quis adipisicing aliquip sit tempor enim est. Culpa esse irure officia excepteur velit incididunt nulla mollit. Id ad id ullamco qui pariatur eu est voluptate officia nostrud incididunt. 
-Ipsum magna minim incididunt proident incididunt laborum aliquip reprehenderit aliqua ullamco. Adipisicing sunt minim esse minim incididunt ex sint eu ea proident veniam aliquip sunt duis. Elit laboris in ad culpa aute ex ad. Fugiat proident quis adipisicing aliquip sit tempor enim est. Culpa esse irure officia excepteur velit incididunt nulla mollit. Id ad id ullamco qui pariatur eu est voluptate officia nostrud incididunt.
-Ipsum magna minim incididunt proident incididunt laborum aliquip reprehenderit aliqua ullamco. Adipisicing sunt minim esse minim incididunt ex sint eu ea proident veniam aliquip sunt duis. Elit laboris in ad culpa aute ex ad. Fugiat proident quis adipisicing aliquip sit tempor enim est. Culpa esse irure officia excepteur velit incididunt nulla mollit. Id ad id ullamco qui pariatur eu est voluptate officia nostrud incididunt.</p>
-        </div>
+    emailjs.sendForm('service_obghm38', 'template_u9c1xzq', form.current, 'user_YCFq6W7ZeLhBZ6dFS68j4')
+    .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
-    )
-}
+  return (
+    <form ref={form} onSubmit={sendEmail}>
+      <label>Name</label>
+      <input type="text" name="name" />
+      <label>Email</label>
+      <input type="email" name="mail" />
+      <label>Message</label>
+      <textarea name="message" />
+      <input type="submit" value="Send" />
+    </form>
+  );
+};

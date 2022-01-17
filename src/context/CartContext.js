@@ -7,9 +7,17 @@ const CartProvider = ({children}) => {
     const [productCarts, setProducts] = useState([])
     const [open, setOpen] = useState(false);
     const [checkOutModal, setCheckOutModal] = useState(false);
+    const [dataCredit, setDataCredit] = useState({
+        nombre : '',
+        numero : '',
+        fecha: '',
+        cvc: ''
+    })
     
 
-    const isInCart = id => productCarts.some(productCart => productCart.id === id);
+    function isInCart(id) {
+        return productCarts.some(productCart => productCart.id === id);
+    }
 
     
     const addProducts = (productCart, quantity) => {
@@ -63,7 +71,9 @@ const CartProvider = ({children}) => {
         setOpen,
         checkOutModal, 
         setCheckOutModal,
-        addItem
+        addItem,
+        dataCredit,
+        setDataCredit
     }
     
     return(

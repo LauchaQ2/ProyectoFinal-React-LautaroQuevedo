@@ -1,19 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import '../Footer/Footer.css'
 
 export default function Footer(){
+
+    const [size, setSize] = useState(window.innerWidth);
+    
+    useEffect(()=>{
+      const handleSize = () =>{
+        setSize(window.innerWidth);
+      }
+      window.addEventListener("resize", handleSize)
+    },[])
+
 return(
-    <div className="container-fluid footer">
-        <div>
-            <ul className='text-footer'>
-                <li>
-                    <h2>Contacto</h2>
-                </li>
-                <li>📞 +234234233532</li>
-                <li>📧 yotomo@gmail.com</li>
-            </ul>
-        </div>
-        <img className="img-fluid" width="250px" height="190px" src="https://i.ibb.co/19JjhjR/Whats-App-Image-2021-12-13-at-9-55-52-PM.jpg"/>
-    </div>
+    <footer className={size < 500 ? "navbar-fixed-bottom d-block text-center mb-0":null}>
+        <p><strong>YoTomo ®</strong> - 2001-2021 Todos los derechos reservados</p>
+        <p>📧 contacto@yotomo.com.ar</p>
+        <p>📱 +54 9 11-6666-6666</p>
+    </footer>
 )
 }

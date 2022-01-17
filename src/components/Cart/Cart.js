@@ -9,9 +9,11 @@ import { Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Checkout from '../Checkout/Checkout';
 import ModalCart from '../ModalCart/ModalCart'
-
+import PayModal from '../PayModal/PayModal';
 
 export default function Cart(){
+
+    
 
     const [total, setTotal] = useState([])
     const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal, addItem} = useContext(CartContext)
@@ -40,7 +42,7 @@ export default function Cart(){
     })
     console.log(total)
     return(
-        <div className='container mt-3'>
+        <div className={productCarts.length === 0 ? "container contvoid d-flex align-content-around flex-wrap mt-3" : "container mt-3"}>
         {productCarts.length === 0 ?
             <>
                 <div className='container-fluid d-flex justify-content-center'>
@@ -56,10 +58,10 @@ export default function Cart(){
         <table class="table">
         <thead>
             <tr>
-                <th className='fontsize' scope="col"></th>
-                <th className='fontsize' scope="col">Nombre</th>
-                <th className='fontsize' scope="col">Precio</th>
-                <th className='fontsize' scope="col">Cantidad</th>
+                <th className='cartTitles' scope="col">Nombre</th>
+                <th className='cartTitles' scope="col">P. Unit.</th>
+                <th className='cartTitles' scope="col">P. Total</th>
+                <th className='cartTitles' scope="col">Cantidad</th>
             </tr>
         </thead>
         {productCarts.map(productCart => {
@@ -67,16 +69,16 @@ export default function Cart(){
                     <>                 
                         <tbody>
                             <tr>
-                            <td className='img-card'>
-                            <Link to={`/product/${productCart.id}`}>
-                            <img className='img-item-cart' src={productCart.pictureURL} alt="imagen del producto" />
+                            <td className='fontsize'>
+                            <Link className='no-dec' to={`/product/${productCart.id}`}>                           
+                            {productCart.title}
                             </Link>
                             </td>
-                            <td className='fontsize'>{productCart.title}</td>
+                            <td className='fontsize'>${productCart.price}</td>
                             <td className='fontsize'>${productCart.price * productCart.quantity}</td>
-                            <td className='fontsize'>Cant: {productCart.quantity}</td>
+                            <td className='fontsize'>{productCart.quantity}</td>
                             <td className='fontsize'>
-                            <Button
+                            <Button className='button-remove'
                              onClick={() =>{
                                         removeItem(productCart.id,productCart.quantity)
                                         setTotal([]);

@@ -47,3 +47,10 @@ h1{
 .button-buy:hover{
     color: black!important;
 }
+.contvoid{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    align-content: center;
+}

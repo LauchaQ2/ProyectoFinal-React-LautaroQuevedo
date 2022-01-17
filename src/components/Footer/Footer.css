@@ -1,15 +1,23 @@
-.footer{
-    background-color: grey;
-    height: 200px;
-    margin-top: 50px;
-    text-align: center;
-    color: white;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
 .text-footer{
     list-style: none;
     text-align: left;
+}
+footer{
+    background: rgb(71,71,71);
+    background: linear-gradient(90deg, rgba(71,71,71,1) 0%, rgba(255,0,0,1) 50%, rgba(71,71,71,1) 100%);
+    display: flex;
+    align-content: center!important;
+    align-items: center!important;
+    justify-content: space-around;
+    height: auto!important;
+    padding: 20px 0 20px 0;
+    margin-top: 50px;
+    margin-bottom: 0!important;
+    width: 100%;
+}
+footer p{
+    color: white;
+    font-weight: bold;
+    height: auto;
+    margin: 0!important;
 }

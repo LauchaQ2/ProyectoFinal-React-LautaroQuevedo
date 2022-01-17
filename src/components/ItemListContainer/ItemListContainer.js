@@ -7,9 +7,7 @@ import { apiURL } from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
-import Banner from '../Banner/Banner'
 import getProducts from '../../FirebaseRequests/GetProductsCollection';
-import InfoBanner from '../InfoBanner/InfoBanner';
 
 export default function ItemListContainer(){
     const {category} = useParams();
@@ -18,7 +16,6 @@ export default function ItemListContainer(){
     const [activeCategory, setActiveCategory] = useState('all')
     const categories = ['vino', 'cerveza', 'licor']
 
-    
 
     useEffect(() => {
       getProducts
@@ -27,15 +24,13 @@ export default function ItemListContainer(){
           setTimeout( () => {
             setLoader(false)
           }, 500);
-          
- 
         })
+       
     },[ category, activeCategory ])
- 
+
     return(
 
-      <><Banner />
-      <InfoBanner/>
+      <>
       <div>
         <div className='row'>
           <div className="col-md-6 d-flex align-items-center">

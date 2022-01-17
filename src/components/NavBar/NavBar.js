@@ -54,7 +54,7 @@ export default function NavBar() {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <Navbar fixed={scrollFixed>50 ? "top" : null} bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
+      <Navbar bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
       <Container fluid>
       <Button variant="primary" onClick={handleShow}>
        <MenuIcon />

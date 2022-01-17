@@ -10,7 +10,7 @@ export default function CartPage(){
     
     return(
         <div>
-        <h1 className='text-center containerBanner'>Carrito de Compras</h1>
+        <h1 className='text-center containerBanner'>Detalle de su compra</h1>
        <Cart/>
         </div>
     )

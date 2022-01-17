@@ -1,4 +1,5 @@
 *{
+   
 }
 .img-item-cart{
     width: 100%;
@@ -7,11 +8,32 @@
 .img-card{
     width: 300px;
     height: auto;
+    border: 1px solid black;
 }
 .fontsize{
-    font-size: 2.5vw;
+    font-size: 2.3vw;
     text-align: center;
     justify-content: center;
     align-content: center;
     margin-top: 20px;
+    border: 1px solid black;
+}
+.cartTitles{
+    font-size: 2.3vw;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    margin-top: 20px;
+    border-bottom: black 1px solid;
+}
+.contvoid{
+    height: 300px;
+    margin-bottom: 120px;
+}
+.no-dec{
+    text-decoration: none!important;
+    color: black;
+}
+.no-dec:hover{
+    color: black;
 }
