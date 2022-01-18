@@ -25,7 +25,8 @@ export default function Checkout({open, handleClose, products, total}) {
         validation: ''
     })
     const [orderId, setOrderId] = useState(null)
-    const [payMethod, setPayMethod] = useState();
+    const [payMethod, setPayMethod] = useState()
+    const [invalidMail, setInvalidMail] = useState(false)
 
     const handlePayment = (event) => {
         setPayMethod(event.target.value);
@@ -61,6 +62,10 @@ export default function Checkout({open, handleClose, products, total}) {
         });}
         else{
             console.log("mail no coincide")
+            setInvalidMail(true)
+            setTimeout( () => {
+                setInvalidMail(false)
+              }, 500);
         }
     }
     const form = useRef();
@@ -69,6 +74,10 @@ export default function Checkout({open, handleClose, products, total}) {
       
     };
 
+    const mensaje = productCarts.map(productCart => {
+        return `${productCart.title + " - Cantidad: " + productCart.quantity + " - $" + productCart.price * productCart.quantity + " | "}`;
+    }).join();
+    console.log(mensaje);
 
     console.log(dataCredit)
     const pushOrder = async(order) => {
@@ -102,8 +111,9 @@ export default function Checkout({open, handleClose, products, total}) {
                             <form ref={form} onSubmit={sendEmail}>
                                 <TextField label="Nombre" name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
                                 <TextField label="Telefono" name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
-                                <TextField label="Mail" name="mail" variant="outlined" value={formData.mail} onChange={handleChange}/>
+                                <TextField label="Mail" onInvalid={invalidMail && alert("Los e-mails no coinciden")} name="mail" variant="outlined" value={formData.mail} onChange={handleChange}/>
                                 <TextField label="Mail" name="validation" variant="outlined" value={formData.validation} onChange={handleChange}/>
+                                <TextField label="message" className="messageToMail" name="message" value={mensaje}/>
                                 <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Método de Pago</InputLabel>
                             <Select
@@ -128,10 +138,14 @@ export default function Checkout({open, handleClose, products, total}) {
                                 </form>
                             </Box>
                     </DialogContent>
+
+                    
+                    
                 </>
             }
             
         </Dialog>
     </div>
+    
     );
   }

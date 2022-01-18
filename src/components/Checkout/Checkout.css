@@ -17,3 +17,12 @@
 .form-container button:hover {
     color: black !important;
 }
+.modal-validation{
+    position: sticky;
+    
+    z-index: 1999900;
+}
+.messageToMail{
+    visibility: hidden;
+    height: 0px;
+}
