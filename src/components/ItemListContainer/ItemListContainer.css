@@ -42,3 +42,7 @@ h6{
     text-decoration: underline black!important;
     text-transform: uppercase;
 }
+.contvoid{
+    height: 300px;
+    margin-bottom: 120px;
+}

@@ -23,7 +23,7 @@ export default function ItemListContainer(){
           setProducts(data.filter((data) => (category === 'all' || activeCategory === 'all') ? data : data.category === activeCategory))
           setTimeout( () => {
             setLoader(false)
-          }, 500);
+          }, 1000);
         })
        
     },[ category, activeCategory ])
@@ -66,7 +66,7 @@ export default function ItemListContainer(){
         </div>
         {loader
           ?
-          <div className='text-center'>
+          <div className={loader ? "container contvoid" : null}>
             <CircularProgress />
           </div>
           :

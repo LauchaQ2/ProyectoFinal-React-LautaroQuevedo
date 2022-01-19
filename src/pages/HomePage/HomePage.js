@@ -5,6 +5,7 @@ import Banner from '../../components/Banner/Banner'
 import getProducts from '../../FirebaseRequests/GetProductsCollection';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 import './HomePage.css'
 
 
@@ -19,12 +20,18 @@ export default function HomePage(){
             setFeaturedProducts(data.filter((data) => data.price > 1500))
             setTimeout( () => {
               setLoader(false)
-            }, 500);
+            }, 2000);
           })
          
       },[])
 
     return(
+      <>
+      {loader ? 
+      <div className="container contvoid d-flex align-content-around flex-wrap mt-3">
+        <CircularProgress/>
+      </div>
+      :
         <>
         <Banner />
       <InfoBanner/>
@@ -35,6 +42,9 @@ export default function HomePage(){
       <Button className='button-to-products'>VER TODOS NUESTROS PRODUCTOS</Button>
       </Link>
       </div>
-        </>
+    </>
+      }
+</>
+       
     )
 }
