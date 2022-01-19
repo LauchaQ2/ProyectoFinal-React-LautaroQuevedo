@@ -16,17 +16,17 @@ import emailjs from 'emailjs-com';
 
 export default function Checkout({open, handleClose, products, total}) {
     
-    const {productCarts, totalPrice, dataCredit} = useContext(CartContext)
+    const {productCarts, totalPrice, dataCredit, clearCart} = useContext(CartContext)
 
      const [formData, setFormData] = useState({
         nombre : '',
         telefono : '',
-        mail: '',
-        validation: ''
+        email : '',
+        validationEmail : ''
     })
     const [orderId, setOrderId] = useState(null)
-    const [payMethod, setPayMethod] = useState()
-    const [invalidMail, setInvalidMail] = useState(false)
+    const [payMethod, setPayMethod] = useState("")
+    const [invalid, setInvalid] = useState(false)
 
     const handlePayment = (event) => {
         setPayMethod(event.target.value);
@@ -36,12 +36,16 @@ export default function Checkout({open, handleClose, products, total}) {
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData({...formData, [name] : value})
-        console.log(formData.mail)
-        console.log(formData.validation)
+        if(formData.email === formData.validationEmail){
+            setInvalid(true);
+        }
     }
 
+    console.log(formData)
+
+
     const sendOrder = (e) => {
-        if(formData.mail === formData.validation){
+        if(formData.email === formData.validationEmail && formData.nombre != "" && formData.telefono != "" && formData.email != "" && formData.validationEmail != "" && payMethod != ""){
         let fechaActual = new Date();
         let order = {}
         order.buyer = formData
@@ -49,11 +53,8 @@ export default function Checkout({open, handleClose, products, total}) {
         order.total = totalPrice
         order.date = fechaActual
         order.payment = dataCredit
-
         pushOrder(order)
-
         e.preventDefault();
-  
       emailjs.sendForm('service_obghm38', 'template_u9c1xzq', form.current, 'user_YCFq6W7ZeLhBZ6dFS68j4')
       .then((result) => {
             console.log(result.text);
@@ -61,18 +62,11 @@ export default function Checkout({open, handleClose, products, total}) {
             console.log(error.text);
         });}
         else{
-            console.log("mail no coincide")
-            setInvalidMail(true)
-            setTimeout( () => {
-                setInvalidMail(false)
-              }, 500);
+            setInvalid(true)
+            console.log("nombre incompleto")
         }
     }
     const form = useRef();
-
-    const sendEmail = (e) => {
-      
-    };
 
     const mensaje = productCarts.map(productCart => {
         return `${productCart.title + " - Cantidad: " + productCart.quantity + " - $" + productCart.price * productCart.quantity + " | "}`;
@@ -80,11 +74,15 @@ export default function Checkout({open, handleClose, products, total}) {
     console.log(mensaje);
 
     console.log(dataCredit)
+
     const pushOrder = async(order) => {
         const orderFirebase = collection(db, 'ordenes')
         const orden = await addDoc(orderFirebase, order)
         setOrderId(orden.id)
     }
+    const formPreventDefault = (e) =>{
+        e.preventDefault();
+      }
     
   
     return (
@@ -107,16 +105,17 @@ export default function Checkout({open, handleClose, products, total}) {
                 <>
                     <DialogTitle>Completa tus datos para finalizar tu compra</DialogTitle>
                         <DialogContent>
-                            <Box component="form" noValidate autoComplete="off" className="form-container">
-                            <form ref={form} onSubmit={sendEmail}>
-                                <TextField label="Nombre" name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
-                                <TextField label="Telefono" name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
-                                <TextField label="Mail" onInvalid={invalidMail && alert("Los e-mails no coinciden")} name="mail" variant="outlined" value={formData.mail} onChange={handleChange}/>
-                                <TextField label="Mail" name="validation" variant="outlined" value={formData.validation} onChange={handleChange}/>
+                            <Box noValidate autoComplete="off" >
+                            <form ref={form} onSubmit={formPreventDefault} className="form-container">
+                                <TextField label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
+                                <TextField label="Telefono" required name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
+                                <TextField label="Mail" required type="email" name="email" variant="outlined" value={formData.email} onChange={handleChange}/>
+                                <TextField label="Mail" required type="email" name="validationEmail" variant="outlined" value={formData.validationEmail} onChange={handleChange}/>
+                                {invalid && <p>Los e-mails no coinciden</p>}
                                 <TextField label="message" className="messageToMail" name="message" value={mensaje}/>
                                 <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Método de Pago</InputLabel>
-                            <Select
+                            <Select required
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
                                 value={payMethod}
@@ -134,7 +133,7 @@ export default function Checkout({open, handleClose, products, total}) {
                             <p>CBU: 23113243546543423423535</p>
                             <p>Al finalizar su compra, dentro de las próximas 2hs deberá realizar la transferencia sino su orden será denegada.</p>
                             </div>}
-                                <Button variant="outlined" onClick={sendOrder}>Finalizar Compra</Button>
+                                <Button variant="outlined" type="submit" onClick={sendOrder}>Finalizar Compra</Button>
                                 </form>
                             </Box>
                     </DialogContent>

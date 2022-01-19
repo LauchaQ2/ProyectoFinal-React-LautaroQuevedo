@@ -21,10 +21,12 @@ export default function Cart(){
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
+        console.log("ABIERTO")
       };
   
       const handleClose = () => {
         setOpen(false);
+        console.log("CERRADO")
       };
 
     const handleCheckout = () =>{
@@ -40,7 +42,6 @@ export default function Cart(){
         const tot = productCart.price * productCart.quantity
         total.push(tot);
     })
-    console.log(total)
     return(
         <div className={productCarts.length === 0 ? "container contvoid d-flex align-content-around flex-wrap mt-3" : "container mt-3"}>
         {productCarts.length === 0 ?
