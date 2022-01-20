@@ -7,7 +7,9 @@
     flex-direction: column;
     width: 500px;
 }
-
+.form-mobile > div{
+    margin-bottom: 15px;
+}
 .form-container button {
     background: black;
     border: 1px solid black !important;
@@ -16,11 +18,6 @@
 
 .form-container button:hover {
     color: black !important;
-}
-.modal-validation{
-    position: sticky;
-    
-    z-index: 1999900;
 }
 .messageToMail{
     visibility: hidden;

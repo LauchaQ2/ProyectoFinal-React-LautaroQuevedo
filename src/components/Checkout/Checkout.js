@@ -1,4 +1,4 @@
-import React, {useState,useContext, useRef} from 'react';
+import React, {useState,useContext, useRef, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -14,7 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import PayModal from '../PayModal/PayModal';
 import emailjs from 'emailjs-com';
 
-export default function Checkout({open, handleClose, products, total}) {
+export default function Checkout({open, handleClose, products, total, size}) {
     
     const {productCarts, totalPrice, dataCredit, clearCart} = useContext(CartContext)
 
@@ -31,14 +31,19 @@ export default function Checkout({open, handleClose, products, total}) {
     const handlePayment = (event) => {
         setPayMethod(event.target.value);
       };
-    
+
+      useEffect(()=>{
+        if(formData.email === formData.validationEmail){
+            setInvalid(false);
+        }
+        else{
+            setInvalid(true)
+        }
+        },[formData.email, formData.validationEmail])
 
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData({...formData, [name] : value})
-        if(formData.email === formData.validationEmail){
-            setInvalid(true);
-        }
     }
 
     console.log(formData)
@@ -96,9 +101,9 @@ export default function Checkout({open, handleClose, products, total}) {
         >
             {orderId != null ? 
                 <DialogContent>
-                            <Box className="form-container">
+                            <Box className={size > 500 ? "form-container" : "w-100 form-mobile text-center"}>
                             <DialogTitle>La orden se generó con éxito {orderId}</DialogTitle>
-                            <h4>Te hemos enviado a tu correo información de la compra</h4>
+                            <h4 className={size > 500 ? null : "text-wrap"}>Te hemos enviado a tu correo información de la compra</h4>
                             </Box>
                     </DialogContent>
              :
@@ -106,11 +111,11 @@ export default function Checkout({open, handleClose, products, total}) {
                     <DialogTitle>Completa tus datos para finalizar tu compra</DialogTitle>
                         <DialogContent>
                             <Box noValidate autoComplete="off" >
-                            <form ref={form} onSubmit={formPreventDefault} className="form-container">
-                                <TextField className="textfield" label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
-                                <TextField label="Telefono" required name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
-                                <TextField label="Mail" required type="email" name="email" variant="outlined" value={formData.email} onChange={handleChange}/>
-                                <TextField label="Mail" required type="email" name="validationEmail" variant="outlined" value={formData.validationEmail} onChange={handleChange}/>
+                            <form ref={form} onSubmit={formPreventDefault} className={size > 500 ? "form-container" : "w-100 form-mobile text-center"}>
+                                <TextField className={size > 500 ? null : "w-100"} label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Telefono" required name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="email" variant="outlined" value={formData.email} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="validationEmail" variant="outlined" value={formData.validationEmail} onChange={handleChange}/>
                                 {invalid && <p>Los e-mails no coinciden</p>}
                                 <TextField label="message" className="messageToMail" name="message" value={mensaje}/>
                                 <FormControl fullWidth>

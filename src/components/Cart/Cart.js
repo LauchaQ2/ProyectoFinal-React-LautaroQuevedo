@@ -13,7 +13,14 @@ import PayModal from '../PayModal/PayModal';
 
 export default function Cart(){
 
+    const [size, setSize] = useState(window.innerWidth);
     
+    useEffect(()=>{
+      const handleSize = () =>{
+        setSize(window.innerWidth);
+      }
+      window.addEventListener("resize", handleSize)
+    },[])
 
     const [total, setTotal] = useState([])
     const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal, addItem} = useContext(CartContext)
@@ -70,23 +77,23 @@ export default function Cart(){
                     <>                 
                         <tbody>
                             <tr>
-                            <td className='fontsize'>
+                            <td className={size > 500 ? 'fontsize' : 'fs-7 text-center border'}>
                             <Link className='no-dec' to={`/product/${productCart.id}`}>                           
                             {productCart.title}
                             </Link>
                             </td>
-                            <td className='fontsize'>${productCart.price}</td>
-                            <td className='fontsize'>${productCart.price * productCart.quantity}</td>
-                            <td className='fontsize'>{productCart.quantity}</td>
-                            <td className='fontsize'>
-                            <Button className='button-remove'
+                            <td className={size > 500 ? 'fontsize' : "fs-7 text-center border"}>${productCart.price}</td>
+                            <td className={size > 500 ? 'fontsize' : "fs-7 text-center border"}>${productCart.price * productCart.quantity}</td>
+                            <td className={size > 500 ? 'fontsize' : "fs-7 text-center border"}>{productCart.quantity}</td>
+                            <td className={size > 500 ? 'fontsize' : 'd-flex'}>
+                            <Button className={size> 500 ? 'button-remove' : 'button-remove-mobile'}
                              onClick={() =>{
                                         removeItem(productCart.id,productCart.quantity)
                                         setTotal([]);
                                     }} style={{background: "red"}} variant="contained">
                               <RemoveIcon fontSize="small"/>
                             </Button>
-                            <Button className='button-remove' onClick={()=>addItem(productCart.id,productCart.quantity)} style={{background: "red"}} variant="contained">
+                            <Button className={size> 500 ? 'button-remove' : 'button-remove-mobile'} onClick={()=>addItem(productCart.id,productCart.quantity)} style={{background: "red"}} variant="contained">
                             +
                             </Button>
                             </td>
@@ -100,16 +107,17 @@ export default function Cart(){
             <div className='container-fluid d-flex justify-content-start'>
             </div>
             :
-            <div className='container-fluid d-flex justify-content-around'>
-                <h3>Total: ${totalPrice}</h3>
+            <div className={size > 500 ? 'container-fluid d-flex justify-content-around align-items-center mb-3 mt-2' : 'container-fluid text-center d-block'}>
+                <h3 className={size > 500 ? 'total-style': 'fs-2 mt-2'}>Total: ${totalPrice}</h3>
                 
-                <Button onClick={handleClickOpen} style={{background: "red"}} variant="contained">COMPRAR</Button>
+                <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} onClick={handleClickOpen} variant="contained">COMPRAR</Button>
                 <Checkout
                 open={open} 
                 handleClose={handleClose} 
                 total={totalPrice}
+                size={size}
             />
-                <Button onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
+                <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} onClick={clear}  variant="contained">Vaciar Carrito</Button>
             </div>
             }
         </div>
