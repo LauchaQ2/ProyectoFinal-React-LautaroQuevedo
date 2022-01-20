@@ -44,6 +44,13 @@ h1{
     padding: 1px;
     background-color: rgb(53, 53, 53)!important;
 }
+.btn-mobile{
+    width: 70%!important;
+    height: 30px;
+    background-color: rgb(53, 53, 53)!important;
+    font-size: 12px!important;
+    color: white!important;
+}
 .button-buy:hover{
     color: black!important;
 }

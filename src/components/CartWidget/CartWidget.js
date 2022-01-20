@@ -15,6 +15,7 @@ const CartWidget = () => {
     const totalProducts = productCarts.map(productCart => productCart.quantity).reduce((prev, curr) => prev + curr, 0);
 
     
+    
 
 
     const openCart = () => {

@@ -107,7 +107,7 @@ export default function Checkout({open, handleClose, products, total}) {
                         <DialogContent>
                             <Box noValidate autoComplete="off" >
                             <form ref={form} onSubmit={formPreventDefault} className="form-container">
-                                <TextField label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
+                                <TextField className="textfield" label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
                                 <TextField label="Telefono" required name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
                                 <TextField label="Mail" required type="email" name="email" variant="outlined" value={formData.email} onChange={handleChange}/>
                                 <TextField label="Mail" required type="email" name="validationEmail" variant="outlined" value={formData.validationEmail} onChange={handleChange}/>

@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
-export default function ItemCount({stock, initial, onAdd}){
+export default function ItemCount({stock, initial, onAdd, size}){
         
 
 
@@ -35,9 +35,9 @@ export default function ItemCount({stock, initial, onAdd}){
 
         return(
             <div>
-            <button onClick={subAmount} className="btn btn2 bg-light border">-</button>
-            <input type="text" className="btn btn1 bg-light border" readOnly value={counter}/>
-            <button onClick={addAmount} className="btn btn2 bg-light border">+</button>
+            <button onClick={subAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>-</button>
+            <input type="text" className={size > 500 ? "btn btn2 fw-bold bg-light border" : "btn count-mobile bg-light border"} readOnly value={counter}/>
+            <button onClick={addAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>+</button>
             <div className="justify-content-center input-group mt-1 mb-1">
             <Button className="btn cart chart border" onClick={()=>{onAdd(counter)}}>
             <ShoppingCartIcon onClick={handleAdded} sx={{ color: "#fff" }} fontSize="medium" />

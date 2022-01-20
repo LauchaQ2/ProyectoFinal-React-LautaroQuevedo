@@ -5,6 +5,13 @@
     text-decoration: none!important;
     font-size: 30px!important;
 }
+.button-to-products-mobile{
+    border: 1px solid rgba(0, 0, 0, 0.678)!important;
+    background-color: black!important;
+    color: white!important;
+    text-decoration: none!important;
+    font-size: 18px!important;
+}
 .button-to-products:hover{
     background-color: white!important;
     color: black!important;

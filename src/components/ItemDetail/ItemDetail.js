@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount'
 import { Button } from '@mui/material';
@@ -10,7 +10,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 export default function ItemDetail({ data }) {
         const [loader, setLoader] = useState(true)
         const { addProducts , productCarts, setQuant} = useContext(CartContext)
-        console.log("data item: ", data)
+        const [size, setSize] = useState(window.innerWidth);
+    
+            useEffect(()=>{
+            const handleSize = () =>{
+                setSize(window.innerWidth);
+            }
+            window.addEventListener("resize", handleSize)
+            },[])
 
         const itemCart = {
             title: data.title,
@@ -42,7 +49,9 @@ export default function ItemDetail({ data }) {
               <CircularProgress />
             </div>
             :
-            <><div className="row ">
+            <>{size > 500 
+            ? 
+            <div className="row">
                     <div className="col-6 detail text-center">
                         <img className="img-fluid img-border" src={data.pictureURL} />
                     </div>
@@ -61,7 +70,28 @@ export default function ItemDetail({ data }) {
                         </div>
 
                     </div>
-                </div><Slider /></>
+                </div> 
+                :
+                <div className="container">
+                    <div className="container">
+                        <img className="img-fluid img-border" src={data.pictureURL} />
+                    </div>
+                    <div className="container d-flex justifiy-content-center flex-wrap">
+                        <h1 className='w-100 fw-bold fs-3 text-center'>{data.title}</h1>
+                        <h5 className='w-100 fs-6'>Descripción: {data.description}</h5>
+                        <h3 className='w-100 fs-2 fw-bold'>Precio: ${data.price}</h3>
+                        <div className='w-100 d-block text-center'>
+                            <ItemCount size={size} item={itemCart} initial={1} onAdd={onAdd} stock={data.stock} />
+                            <div>
+                                <Link to={"/cart"}>
+                                    <Button className='btn-mobile'>Finalizar mi compra</Button>
+                                </Link>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> 
+                }<Slider /></>
         }
         </div>
     )

@@ -13,6 +13,15 @@ export default function HomePage(){
     const [loader, setLoader] = useState(true)
     const [offers, setOffers] = useState([])
     const [featuredProducts, setFeaturedProducts] = useState([])
+    const [size, setSize] = useState(window.innerWidth);
+    
+           useEffect(()=>{
+            const handleSize = () =>{
+                setSize(window.innerWidth);
+            }
+            window.addEventListener("resize", handleSize)
+            },[])
+
     useEffect(() => {
         getProducts
           .then(data =>{
@@ -33,13 +42,13 @@ export default function HomePage(){
       </div>
       :
         <>
-        <Banner />
+        <Banner size={size} />
       <InfoBanner/>
       <SliderFilter title="NUESTRAS OFERTAS" offers={offers}/>
       <SliderFilter title="PRODUCTOS DESTACADOS" offers={featuredProducts}/>
       <div className='mt-3 container-fluid d-flex justify-content-center'>
       <Link to="/category/all">
-      <Button className='button-to-products'>VER TODOS NUESTROS PRODUCTOS</Button>
+      <Button className={size > 500 ? 'button-to-products' : 'button-to-products-mobile'}>VER TODOS NUESTROS PRODUCTOS</Button>
       </Link>
       </div>
     </>

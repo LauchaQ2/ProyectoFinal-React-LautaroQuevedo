@@ -80,7 +80,10 @@
     align-content: center;
     margin: 0!important;
 }
-
+.fs-7{
+    font-size: 12px;
+    margin: 0!important;
+}
 .d{
     min-width: 360px;
     width: 100%!important;
@@ -101,6 +104,12 @@
     max-height: 4.38vw;
     background-color: rgb(53, 53, 53)!important;
 }
+.button-cart-mobile{
+    font-size: 20px!important;
+    height: auto;
+    padding: 5px!important;
+    background-color: rgb(53, 53, 53)!important;
+}
 .title-cart{
     font-size: 2.83vw;
 }
@@ -109,6 +118,18 @@
     height: 3.38vh;
     max-height: 4.38vh;
     background-color: rgb(53, 53, 53)!important;
+    color: white;
+    text-align: center;
+}
+.button-remove-mobile{
+    width: 20px!important;
+    min-width: 0!important;
+    height: 20px!important;
+    background-color: white!important;
+    color: black!important;
+    border: 1px solid black;
+    text-align: center;
+    padding: 0!important;
 }
 .modalCart{
     z-index: 10000;
@@ -128,6 +149,8 @@
 .header-modal{
     border-bottom: 1px solid black;
     height: auto;
+    padding: 0!important;
+    margin: 0!important;
 }
 .border-box{
     border-bottom: 1px solid black;

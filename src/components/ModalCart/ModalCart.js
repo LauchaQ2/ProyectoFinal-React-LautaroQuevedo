@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import '../ModalCart/ModalCart.css';
 import { Button } from '@mui/material';
 import CartContext from '../../context/CartContext';
@@ -14,6 +14,14 @@ export default function ModalCart({products,showCart}){
 
     const totalProducts = products.map(product => product.quantity).reduce((prev, curr) => prev + curr, 0);
    // const totalPrice = products.map(product => product.price).reduce((prev, curr) => prev + curr, 0);
+   const [size, setSize] = useState(window.innerWidth);
+    
+   useEffect(()=>{
+   const handleSize = () =>{
+       setSize(window.innerWidth);
+   }
+   window.addEventListener("resize", handleSize)
+   },[])
 
     const clear = () =>{
         clearCart();
@@ -33,7 +41,7 @@ export default function ModalCart({products,showCart}){
 
     <div className='modalCart'>
         <div className='d-flex header-modal justify-content-between align-content-center mb-2 p-3 bg-body rounded'>
-         <p className='text-center d-flex align-items-center mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
+         <p className='text-center d-flex align-items-center ms-3 mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
          <button className='btn' onClick={handleClose}>X</button>
         </div>
         <div>
@@ -41,13 +49,13 @@ export default function ModalCart({products,showCart}){
                 return(
                     <div className='container-fluid border-box d-flex justify-content-between align-items-center' key={product.id}>
                         <img className="img-fluid img-cart" src={product.pictureURL} alt="imagen del producto" />
-                        <p className='fontsizeCart bold'>{product.title}</p>
-                        <p className='fontsizeCart'>${product.quantity*product.price}</p>
-                        <span className='fontsizeCart'>Cant: {product.quantity}</span>
-                        <Button className='button-remove' onClick={()=>removeItem(product.id,product.quantity)} style={{background: "red"}} variant="contained">
+                        <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>{product.title}</p>
+                        <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>${product.quantity*product.price}</p>
+                        <Button className={size> 500 ? 'button-remove' : 'button-remove-mobile'} onClick={()=>removeItem(product.id,product.quantity)} variant="contained">
                         <RemoveIcon fontSize="small"/>
                         </Button>
-                        <Button className='button-remove' onClick={()=>addItem(product.id,product.quantity)} style={{background: "red"}} variant="contained">
+                        <input type="text" className={size> 500 ? 'button-remove' : 'button-remove-mobile'} readOnly value={product.quantity}/>
+                        <Button className={size> 500 ?'button-remove' : 'button-remove-mobile'} onClick={()=>addItem(product.id,product.quantity)} variant="contained">
                         +
                         </Button>
                     </div>
@@ -56,12 +64,12 @@ export default function ModalCart({products,showCart}){
             { products.length === 0 ?
                 <></>
             :
-            <div className='container-fluid d-flex justify-content-around align-items-center mb-3 mt-2'>
-            <h6 className='total-style'>Total: ${totalPrice}</h6>
+            <div className={size > 500 ? 'container-fluid d-flex justify-content-around align-items-center mb-3 mt-2' : 'container-fluid d-block'}>
+            <h6 className={size > 500 ? 'total-style': 'fs-2 mt-2'}>Total: ${totalPrice}</h6>
                      <Link to={"/cart"}>
-                         <Button className='button-cart' onClick={handleClose} style={{background: "red"}} variant="contained">ir al carrito</Button>
+                         <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} onClick={handleClose} variant="contained">INICIAR COMPRA</Button>
                     </Link>
-                <Button className='button-cart' onClick={clear} style={{background: "red"}} variant="contained">Vaciar Carrito</Button>
+                <Button className={size > 500 ? 'button-cart' : 'button-cart-mobile mt-2'} onClick={clear} variant="contained">Vaciar Carrito</Button>
                 </div>
             }
             </div>

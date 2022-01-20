@@ -5,6 +5,14 @@
     text-align: center;
     font-size: 2.06vw;
 }
+.count-mobile{
+    width: 30px!important;
+    height: 30px!important;
+    text-align: center;
+    padding: 1px;
+    font-size: 19px;
+    border: 4px solid black
+}
 .btn1{
     width: 4.16vw!important;
     height: 3.42vw!important;

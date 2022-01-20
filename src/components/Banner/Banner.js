@@ -3,7 +3,7 @@ import Carousel from 'react-elastic-carousel';
 import { apiURL } from '../../config';
 import '../Banner/Banner.css'
 
-export default function Banner(){
+export default function Banner({size}){
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },
@@ -16,7 +16,7 @@ export default function Banner(){
 
     return(
         <div className="container mt-5 text-center">
-        <Carousel focusOnSelect={true} className="carousel" itemsToShow={1}>
+        <Carousel  showArrows={size > 500 ? true : false} focusOnSelect={true} className="carousel" itemsToShow={1}>
                 <img className="img-fluid" src="https://i.ibb.co/27J8Y0x/giftcard.png" alt="giftcard" border="0"/>
                 <img className="img-fluid" src="https://i.ibb.co/6b6SDh8/3x2.png" alt="3x2" border="0"/>
                 <img className="img-fluid" src="https://i.ibb.co/xXz8GD3/ahora12.png" alt="ahora12" border="0"/>
