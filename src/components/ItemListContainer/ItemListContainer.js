@@ -31,10 +31,10 @@ export default function ItemListContainer(){
     return(
 
       <>
-      <div>
+      <div className='container-fluid'>
         <div className='row'>
           <div className="col-md-6 d-flex align-items-center">
-            <h2 className='titlehome text-left mb-2'>PRODUCTOS</h2>
+            <h2 className='titlehome text-left'>PRODUCTOS</h2>
           </div>
           <div className="col-md-6 d-flex align-items-center">
             <h4 className='text-left mb-2 mr-5 ml'>CATEGORÍAS</h4>

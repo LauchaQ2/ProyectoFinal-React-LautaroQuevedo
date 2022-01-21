@@ -2,16 +2,21 @@
     font-family: "Roboto";
     text-decoration: none!important;
 }
+.links{
+    width: 0px;
+    height: 0px;
+}
 .product{
-    width: 300px;
+    width: 200px;
     height: auto;
-    border: 1px solid #5c5c5c;
+    border: 1px solid rgb(233, 233, 233);
     border-radius: 5px;
     text-align: center;
     justify-content: center;
     box-shadow: 2px 2px 2px #888888;
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 0 0 10px 0;
+    background-color: rgb(233, 233, 233);
 }
 .img-item{
     width: 100%;
@@ -23,14 +28,18 @@
     flex-wrap: wrap;
     margin-bottom: 0px;
     color:black;
-    font-size: 20px!important;
-
+    height: auto;
+    text-align: left;
 }
-h4,h5{
+.price{
+    height: auto;
+    text-align: left;
+    margin-bottom: 0px;
     color:black;
-    font-weight: bold;
 }
-
+.fs-8{
+    font-size: 14px;
+}
 span.stock-text {
     position: absolute;
     margin-left: 1%;
@@ -39,15 +48,16 @@ span.stock-text {
     padding: 5px;
 }
 .button{
-    border: 1px solid black!important;
-    background-color: white!important;
-    color: black!important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: rgb(53, 53, 53)!important;
+    color: white!important;
 }
 .button-buy:hover{
-    background-color: rgb(218, 218, 218)!important;
+    background-color: rgb(182, 182, 182)!important;
 }
 .button-buy{
     font-size: 1.5vw!important;
     width: auto!important;
     height: auto!important;
+    padding: 2px!important;
 }

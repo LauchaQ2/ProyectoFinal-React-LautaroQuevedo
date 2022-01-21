@@ -27,14 +27,12 @@ export default function Item({data}){
     return(
 
         <div className="product">
-            <Link to={`/product/${data.id}`}>
-            <h5 className="title">{data.title}</h5>
             <img className="img-item" src={data.pictureURL} alt={data.title} />
-            <h4>${data.price}</h4>
-            </Link>
+            <h5 className="fs-6 ms-3 mt-2 fw-bold title word-wrap">{data.title}</h5>
+            <h4 className="fs-8 ms-3 price">${data.price}</h4>
             <ItemCount item={itemCart} initial={1} onAdd={onAdd} stock={data.stock}/>
             <Link to={`/product/${data.id}`}>
-            <Button className="btn button button-buy">Ver detalle</Button>
+            <Button className="btn button mt-2 button-buy">Detalles</Button>
             </Link>
         </div>
     )

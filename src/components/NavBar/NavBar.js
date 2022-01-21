@@ -12,6 +12,7 @@ import ThemeContext from '../../context/ThemeContext';
 import CartContext from '../../context/CartContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import Offcanvas from 'react-bootstrap/Offcanvas'
+import '../../pages/ProductsPage/ProductPage.css'
 
 export default function NavBar() {
   const {theme, changeTheme} = useContext(ThemeContext);
@@ -54,8 +55,8 @@ export default function NavBar() {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <Navbar bg="light shadow p-3 mb-3 bg-body rounded" expand="lg">
-      <Container fluid>
+      <Navbar className='navb-background navb mb-4' bg="shadow p-3" expand="lg">
+      <Container fluid className='navb-background'>
       <Button variant="primary" onClick={handleShow}>
        <MenuIcon />
        </Button>

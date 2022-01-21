@@ -34,16 +34,19 @@ export default function ItemCount({stock, initial, onAdd, size}){
 
 
         return(
-            <div>
-            <button onClick={subAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>-</button>
-            <input type="text" className={size > 500 ? "btn btn2 fw-bold bg-light border" : "btn count-mobile bg-light border"} readOnly value={counter}/>
-            <button onClick={addAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>+</button>
-            <div className="justify-content-center input-group mt-1 mb-1">
-            <Button className="btn cart chart border" onClick={()=>{onAdd(counter)}}>
-            <ShoppingCartIcon onClick={handleAdded} sx={{ color: "#fff" }} fontSize="medium" />
-            <span className={added}>¡Agregado!</span>
-            </Button>
+            <div className='d-flex justify-content-around'>
+            <div className="justify-content-center w-auto input-group mt-1 mb-1">
+                <button onClick={subAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>-</button>
+                <input type="text" className={size > 500 ? "btn btn2 fw-bold bg-light border" : "btn count-mobile bg-light border"} readOnly value={counter} />
+                <button onClick={addAmount} className={size > 500 ? "btn btn2 bg-light border" : "btn count-mobile bg-light border"}>+</button>
             </div>
-            </div>
+            <div className='d-flex justify-content-around'>
+                   <Button className="btn chart border" onClick={() => { onAdd(counter); } }>
+                        <ShoppingCartIcon onClick={handleAdded} sx={{ color: "#fff" }} fontSize="medium" />
+                        <span className={added}>¡Agregado!</span>
+                    </Button>
+                </div>
+                </div>
+            
         )
 }

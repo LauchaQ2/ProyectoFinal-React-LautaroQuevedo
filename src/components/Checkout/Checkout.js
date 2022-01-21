@@ -24,12 +24,25 @@ export default function Checkout({open, handleClose, products, total, size}) {
         email : '',
         validationEmail : ''
     })
+    const [trimmed, setTrimmed] = useState({
+        email : '',
+        validationEmail : ''
+    })
     const [orderId, setOrderId] = useState(null)
     const [payMethod, setPayMethod] = useState("")
     const [invalid, setInvalid] = useState(false)
 
     const handlePayment = (event) => {
         setPayMethod(event.target.value);
+      };
+
+      const handleKeyDown = (e) => {
+        if (e.key === " " && formData.email.length===0) {
+          e.preventDefault();
+        }
+        if (e.key === " " && formData.validationEmail.length===0) {
+            e.preventDefault();
+          }
       };
 
       useEffect(()=>{
@@ -39,6 +52,8 @@ export default function Checkout({open, handleClose, products, total, size}) {
         else{
             setInvalid(true)
         }
+        setTrimmed(formData.email)
+        console.log(trimmed.email)
         },[formData.email, formData.validationEmail])
 
     const handleChange = (e) => {
@@ -112,10 +127,10 @@ export default function Checkout({open, handleClose, products, total, size}) {
                         <DialogContent>
                             <Box noValidate autoComplete="off" >
                             <form ref={form} onSubmit={formPreventDefault} className={size > 500 ? "form-container" : "w-100 form-mobile text-center"}>
-                                <TextField className={size > 500 ? null : "w-100"} label="Nombre" required name="nombre" variant="outlined" value={formData.nombre} onChange={handleChange}/>
-                                <TextField className={size > 500 ? null : "w-100"} label="Telefono" required name="telefono" variant="outlined" value={formData.telefono} onChange={handleChange}/>
-                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="email" variant="outlined" value={formData.email} onChange={handleChange}/>
-                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="validationEmail" variant="outlined" value={formData.validationEmail} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Nombre" required name="nombre" variant="outlined" value={formData.nombre.trim()} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Telefono" required name="telefono" variant="outlined" value={formData.telefono.trim()} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="email" variant="outlined" value={trimmed.email} onKeyDown={handleKeyDown} onChange={handleChange}/>
+                                <TextField className={size > 500 ? null : "w-100"} label="Mail" required type="email" name="validationEmail" variant="outlined" onKeyDown={handleKeyDown} value={formData.validationEmail.trim()} onChange={handleChange}/>
                                 {invalid && <p>Los e-mails no coinciden</p>}
                                 <TextField label="message" className="messageToMail" name="message" value={mensaje}/>
                                 <FormControl fullWidth>
