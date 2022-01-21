@@ -14,7 +14,7 @@ export default function ItemListContainer(){
     const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState('all')
-    const categories = ['vino', 'cerveza', 'licor']
+    const categories = ['vino', 'cerveza', 'licor','vodka']
 
 
     useEffect(() => {
@@ -30,24 +30,20 @@ export default function ItemListContainer(){
 
     return(
 
-      <>
+      <div className='row'>
+                  <h2 className='titlehome text-center'>NUESTROS PRODUCTOS</h2>
+      <div className='col-md-2'>
       <div className='container-fluid'>
-        <div className='row'>
-          <div className="col-md-6 d-flex align-items-center">
-            <h2 className='titlehome text-left'>PRODUCTOS</h2>
-          </div>
-          <div className="col-md-6 d-flex align-items-center">
-            <h4 className='text-left mb-2 mr-5 ml'>CATEGORÍAS</h4>
-            <div className='d-flex flex-wrap'>
-              <h6 className='text-left mb-2 mr-3'>
+            <h1 className='text-left fs-2 fw-bold mb-2'>CATEGORÍAS</h1>
+              <h5 className='text-left fs-4 mb-2 mr-3'>
                 <Link style={{ color: "#000000" }} onClick={() => { setActiveCategory('all'); } } to={`/category/all`}>
                   TODOS
                 </Link>
-              </h6>
+              </h5>
 
               {categories.map((category) => {
                 return (
-                  <h6 className='text-left mb-2 mr-3'>
+                  <h5 className='text-left fs-4 mb-3 mr-3'>
                     <Link style={{ color: "#000000" }}
                       onClick={() => { setActiveCategory(category); } }
                       to={`/category/${category}`}
@@ -57,22 +53,25 @@ export default function ItemListContainer(){
                       {category}
 
                     </Link>
-                  </h6>
+                  </h5>
                 );
 
               })}
             </div>
-          </div>
-        </div>
+            </div>
         {loader
           ?
           <div className={loader ? "container contvoid" : null}>
             <CircularProgress />
           </div>
           :
-          <><ItemList products={products} />
-          </>}
+          <div className='col-md-10'>
+          <ItemList products={products} />
+          </div>
+          }
 
-      </div></>
+      
+
+      </div>
     )
 }
