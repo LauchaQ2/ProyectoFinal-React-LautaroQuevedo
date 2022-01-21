@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
 import NavBar from '../NavBar/NavBar.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '../Footer/Footer';
@@ -9,10 +10,27 @@ import AboutUsPage from '../../pages/AboutUsPage/AboutUsPage.js';
 import ItemListContainer from '../ItemListContainer/ItemListContainer.js';
 import CartPage from '../../pages/CartPage/CartPage.js';
 import {CartProvider} from '../../context/CartContext';
+import logoHome from '../../assets/YoTomo/logo.svg'
+import 'animate.css';
 
 
 export default function AppRouter(){
+    const [initate, setInitate] = useState(true)
+    useEffect(()=>{
+        setTimeout( () => {
+          setInitate(false)
+        }, 3000);
+        },[])
+
     return(
+        <>
+      {
+        initate
+        ?
+      <div className='homeAnimated'>
+        <img className='img-fluid animate__animated animate__flipInX' id='logoAnimated' src={logoHome} />
+      </div>
+      :
         <BrowserRouter>
             <CartProvider>
             <NavBar/>
@@ -28,5 +46,7 @@ export default function AppRouter(){
                 </CartProvider>
             <Footer/>
       </BrowserRouter>
+    }
+</>
     )
 }

@@ -34,4 +34,7 @@
 .box3{
     height: auto;
 }
+.rec.rec-arrow:focus {
+    outline: none;
+}
 

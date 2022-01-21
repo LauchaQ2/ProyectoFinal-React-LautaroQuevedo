@@ -12,7 +12,8 @@
     text-align: center;
     padding: 1px;
     font-size: 19px;
-    border: 4px solid black
+    border: 4px solid black;
+    z-index: 0!important;
 }
 .btn1{
     width: 4.16vw!important;

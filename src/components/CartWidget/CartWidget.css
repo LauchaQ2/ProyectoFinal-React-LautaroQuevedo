@@ -48,8 +48,8 @@
 .number-cart{
     width: 23px;
     height: 23px;
-    background-color: red;
-    color: white;
+    background-color: white;
+    color: black;
     border-radius: 100%;
     display: flex;
     justify-content: center;

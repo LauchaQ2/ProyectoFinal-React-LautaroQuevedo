@@ -39,15 +39,15 @@ export default function ModalCart({products,showCart}){
     
     return(
 
-    <div className='modalCart'>
-        <div className='d-flex header-modal justify-content-between align-content-center mb-2 p-3 bg-body rounded'>
-         <p className='text-center d-flex align-items-center ms-3 mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
-         <button className='btn' onClick={handleClose}>X</button>
+    <div className='modalCart background-page'>
+        <div className='d-flex background-page header-modal mb-2 justify-content-between align-content-center p-3 rounded'>
+         <p className='text-center background-page d-flex align-items-center ms-3 mb-0 title-cart'>Tienes {totalProducts} productos agregados</p>
+         <button className='btn background-page' onClick={handleClose}>X</button>
         </div>
         <div>
         {products.map(product => {
                 return(
-                    <div className='container-fluid border-box d-flex justify-content-between align-items-center' key={product.id}>
+                    <div className='container-fluid detail border-box mb-2 d-flex justify-content-between align-items-center' key={product.id}>
                         <img className="img-fluid img-cart" src={product.pictureURL} alt="imagen del producto" />
                         <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>{product.title}</p>
                         <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>${product.quantity*product.price}</p>

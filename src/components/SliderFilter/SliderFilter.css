@@ -5,8 +5,14 @@
     border-radius: 50%;
     width: 20px!important;
     padding: 0!important;
+    background-color: white!important;
+    color: black;
 }
-.rec.rec-arrow:focus, .rec.rec-arrow:hover {
+.rec.rec-arrow:hover {
     background-color: black!important;
     color: white;
+}
+.rec.rec-arrow:focus{
+    background-color: inherit;
+    color: black!important;
 }

@@ -48,12 +48,12 @@ export default function HomePage(){
       <SliderFilter title="PRODUCTOS DESTACADOS" offers={featuredProducts}/>
       <div className='mt-3 container-fluid d-flex justify-content-center'>
       <Link to="/category/all">
-      <Button className={size > 500 ? 'button-to-products' : 'button-to-products-mobile'}>VER TODOS NUESTROS PRODUCTOS</Button>
+      <Button className={size > 500 ? 'button-to-products mb-4' : 'button-to-products-mobile mb-4'}>VER TODOS NUESTROS PRODUCTOS</Button>
       </Link>
       </div>
     </>
       }
-</>
+      </>
        
     )
 }

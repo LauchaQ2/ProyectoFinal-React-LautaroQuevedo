@@ -33,7 +33,7 @@ export default function NavBar() {
 
   return (
     <>
-      <Offcanvas className="offcanvas" show={show} onHide={handleClose}>
+      <Offcanvas className="background-page offcanvas" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
         </Offcanvas.Header>
         <Offcanvas.Body>

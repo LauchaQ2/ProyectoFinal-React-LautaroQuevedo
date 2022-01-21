@@ -1,19 +1,8 @@
 body{
     height: auto;
 }
-/**{
-    border:1px solid black;
-}*/
-.banner{
-    width: 100%;
-    height: 500px;
-    margin: 0;
-    background-image: url(../../assets/construction.gif);
-    background-size: contain;
-    background-position-y: center;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    margin-bottom: 50px;
+*{
+    
 }
 h1,h2{
     font-weight:900;
@@ -38,10 +27,44 @@ h6{
 }
 .mr-3{
     color:black!important;
-    text-decoration: underline black!important;
-    text-transform: uppercase;
+    text-decoration: none;
+    text-transform: capitalize;
 }
 .contvoid{
-    height: 300px;
+    height: 500px!important;
     margin-bottom: 120px;
+}
+.scrolled{
+    left: 10px!important;
+    top: 0px!important;
+    width: 18%!important;
+    transition: transform ease-out 0.5s!important;
+}
+.sidebarCat{
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: rgb(233, 233, 233);
+    margin-bottom: 2px;
+}
+.button-category{
+    border: 1px solid rgb(179, 179, 179);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: rgb(179, 179, 179);
+    margin-bottom: 2px;
+    font-weight: bold;
+    width: auto!important;
+}
+.fixed-top{
+    position: fixed!important;
+    transform: translateY(10px)!important;
+    transition: transform ease-in 0.5s!important;
+    z-index: 1!important;
+}
+.index{
+    z-index: 2!important;
+}
+.border-bottom{
+    border-color: black!important;
 }

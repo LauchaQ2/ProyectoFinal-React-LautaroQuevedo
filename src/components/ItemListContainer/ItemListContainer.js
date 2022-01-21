@@ -1,9 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../ItemListContainer/ItemListContainer.css';
-import Item from '../Item/Item.js';
-import Container from 'react-bootstrap/Nav';
 import ItemList from '../ItemList/ItemList';
-import { apiURL } from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
@@ -15,7 +12,15 @@ export default function ItemListContainer(){
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState('all')
     const categories = ['vino', 'cerveza', 'licor','vodka']
+    const [scrollFixed, setScrollFixed] = useState();
 
+    useEffect(()=>{
+      const handleScrollY = () =>{
+        setScrollFixed(window.scrollY)
+      }
+      window.addEventListener("scroll", handleScrollY);
+    },[])
+    console.log(scrollFixed)
 
     useEffect(() => {
       getProducts
@@ -30,21 +35,23 @@ export default function ItemListContainer(){
 
     return(
 
-      <div className='row'>
+      <div className='row index'>
                   <h2 className='titlehome text-center'>NUESTROS PRODUCTOS</h2>
-      <div className='col-md-2'>
-      <div className='container-fluid'>
-            <h1 className='text-left fs-2 fw-bold mb-2'>CATEGORÍAS</h1>
-              <h5 className='text-left fs-4 mb-2 mr-3'>
-                <Link style={{ color: "#000000" }} onClick={() => { setActiveCategory('all'); } } to={`/category/all`}>
-                  TODOS
+      <div className='col-md-2 sidebarCat d-flex justify-content-center'>
+      <div className={ scrollFixed > 143 ? 'fixed-top scrolled w-20' : null}>
+            <h1 className='text-left fs-2 border-bottom fw-bold mt-2 mb-2'>CATEGORÍAS</h1>
+              <h5 className='text-left fs-5 mb-3 mr-3'>
+                <Link className='button-category' style={{ color: "#000000" }} onClick={() => { setActiveCategory('all'); } } to={`/category/all`}>
+                  Todos
                 </Link>
               </h5>
 
               {categories.map((category) => {
                 return (
-                  <h5 className='text-left fs-4 mb-3 mr-3'>
-                    <Link style={{ color: "#000000" }}
+                  <h5 className='text-left fs-5 mb-3 mr-3'>
+                    <Link 
+                      className='button-category'
+                      style={{ color: "#000000" }}
                       onClick={() => { setActiveCategory(category); } }
                       to={`/category/${category}`}
                       key={category}>
@@ -61,7 +68,7 @@ export default function ItemListContainer(){
             </div>
         {loader
           ?
-          <div className={loader ? "container contvoid" : null}>
+          <div className={loader ? "container d-flex justify-content-center align-items-start mt-3 contvoid" : null}>
             <CircularProgress />
           </div>
           :

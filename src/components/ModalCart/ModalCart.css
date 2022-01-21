@@ -115,11 +115,13 @@
 }
 .button-remove{
     width: 3em!important;
-    height: 3.38vh;
+    height: 3.58vh;
     max-height: 4.38vh;
     background-color: rgb(53, 53, 53)!important;
     color: white;
     text-align: center;
+    border: 0px;
+    border-radius: 2px;
 }
 .button-remove-mobile{
     width: 20px!important;
@@ -132,7 +134,7 @@
     padding: 0!important;
 }
 .modalCart{
-    z-index: 10000;
+    z-index: 10000000!important;
     position: fixed;
     top: 0;
     left: 0;
@@ -147,11 +149,9 @@
     border: 1px solid black
 }
 .header-modal{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid grey;
+    border-radius: 0!important;
     height: auto;
     padding: 0!important;
-    margin: 0!important;
-}
-.border-box{
-    border-bottom: 1px solid black;
+    margin: 0;
 }
