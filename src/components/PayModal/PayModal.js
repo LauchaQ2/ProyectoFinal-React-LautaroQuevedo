@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import './PayModal.css'
 import CartContext from '../../context/CartContext';
 
-export default function PayModal() {
+export default function PayModal({size}) {
 
     const [dateCard, setDateCard] = useState();
     const [cvc, setCvc] = useState();
@@ -45,12 +45,12 @@ export default function PayModal() {
   return (
     <div>
         <DialogContent>
-            <Box component="form" noValidate autoComplete="off" className="form-container2">
-                  <TextField label="Nombre como aparece en la tarjeta" name="nombre" variant="outlined" onChange={handleChange}/>
-                    <TextField inputProps={{maxLength: 16}} onChange={handleNumbers} value={dataCredit.numero} label="Número de la tarjeta" name="numero" variant="outlined"/>
+            <Box component="form" noValidate autoComplete="off" className={size > 500 ? "form-container2" : "w-100 form-mobile text-center"}>
+                  <TextField className={size > 500 ? null : "w-100"} label="Nombre como aparece en la tarjeta" name="nombre" variant="outlined" onChange={handleChange}/>
+                    <TextField className={size > 500 ? null : "w-100"} inputProps={{maxLength: 16}} onChange={handleNumbers} value={dataCredit.numero} label="Número de la tarjeta" name="numero" variant="outlined"/>
                     <Box component="form" noValidate autoComplete="off" className="form-container3">
-                    <TextField inputProps={{maxLength: 4, required:"true"}} onChange={handleDate} label="MM/YY" value={dataCredit.fecha} name="fecha" variant="outlined"/>
-                    <TextField inputProps={{maxLength: 3, type: "password", required:"true"}} onChange={handleCVC} label="CVC" value={dataCredit.cvc} name="cvc" variant="outlined"/>
+                    <TextField className={size > 500 ? null : "w-100"} inputProps={{maxLength: 4, required:"true"}} onChange={handleDate} label="MM/YY" value={dataCredit.fecha} name="fecha" variant="outlined"/>
+                    <TextField className={size > 500 ? null : "w-100"} inputProps={{maxLength: 3, type: "password", required:"true"}} onChange={handleCVC} label="CVC" value={dataCredit.cvc} name="cvc" variant="outlined"/>
                     </Box>
             </Box>
         </DialogContent>

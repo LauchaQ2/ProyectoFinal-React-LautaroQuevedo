@@ -147,7 +147,7 @@ export default function Checkout({open, handleClose, products, total, size}) {
                                 <MenuItem disabled value={3}>Cripto</MenuItem>
                             </Select>
                             </FormControl>
-                            {payMethod === 2 && <PayModal/>}
+                            {payMethod === 2 && <PayModal size={size}/>}
                             {payMethod === 1 && 
                             <div className='d-block'> 
                             <p>CBU: 23113243546543423423535</p>

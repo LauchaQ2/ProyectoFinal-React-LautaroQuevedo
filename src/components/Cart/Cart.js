@@ -116,8 +116,10 @@ export default function Cart(){
                 handleClose={handleClose} 
                 total={totalPrice}
                 size={size}
-            />
-                <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} onClick={clear}  variant="contained">Vaciar Carrito</Button>
+            />  
+                <Link to={"/category/all"}>
+                    <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} variant="contained">SEGUIR COMPRANDO</Button>
+                </Link>
             </div>
             }
         </div>
