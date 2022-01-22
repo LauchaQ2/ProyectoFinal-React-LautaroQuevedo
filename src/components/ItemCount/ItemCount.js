@@ -10,11 +10,14 @@ export default function ItemCount({stock, initial, onAdd, size}){
 
     const [counter,setCounter] = useState(initial);
     const [added, setAdded] = useState("hidden added-to-cart");
+    const [addedMobile, setAddedMobile] = useState("hidden added-to-cart-mobile");
 
     const handleAdded = () =>{
         setAdded("visible added-to-cart");
+        setAddedMobile("visible added-to-cart-mobile")
         setTimeout( () => {
             setAdded("hidden added-to-cart")
+            setAddedMobile("hidden added-to-cart-mobile")
           }, 1500);
           console.log(added)
     }
@@ -43,7 +46,7 @@ export default function ItemCount({stock, initial, onAdd, size}){
             <div className='d-flex justify-content-around'>
                    <Button className="btn chart border" onClick={() => { onAdd(counter); } }>
                         <ShoppingCartIcon onClick={handleAdded} sx={{ color: "#fff" }} fontSize="medium" />
-                        <span className={added}>¡Agregado!</span>
+                        <span className={size > 500 ? added : addedMobile}>¡Agregado!</span>
                     </Button>
                 </div>
                 </div>

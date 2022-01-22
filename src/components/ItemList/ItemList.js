@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col'
 import {Link} from 'react-router-dom';
 
 
-export default function ItemList({products}){
+export default function ItemList({products,size}){
 
     console.log(products)
 
@@ -17,7 +17,7 @@ export default function ItemList({products}){
         <div className="container-fluid d-flex mt-2 flex-wrap justify-content-around">
                    {products.map(product => {
                                               return (
-                                              <Item data={product} />
+                                              <Item size={size} data={product} />
                                               )
                                               }
                                   )

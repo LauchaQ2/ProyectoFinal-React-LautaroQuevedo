@@ -77,9 +77,9 @@ export default function ItemDetail({ data }) {
                         <img className="img-fluid img-border" src={data.pictureURL} />
                     </div>
                     <div className="container d-flex justifiy-content-center flex-wrap">
-                        <h1 className='w-100 fw-bold fs-3 text-center'>{data.title}</h1>
+                        <h1 className='w-100 fw-bold fs-2'>{data.title}</h1>
+                        <h3 className='w-100 fs-3 fw-bold'>Precio: ${data.price}</h3>
                         <h5 className='w-100 fs-6'>Descripción: {data.description}</h5>
-                        <h3 className='w-100 fs-2 fw-bold'>Precio: ${data.price}</h3>
                         <div className='w-100 d-block text-center'>
                             <ItemCount size={size} item={itemCart} initial={1} onAdd={onAdd} stock={data.stock} />
                             <div>

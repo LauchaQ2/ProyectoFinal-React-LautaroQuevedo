@@ -13,10 +13,16 @@
     border-radius: 5px;
     text-align: center;
     justify-content: center;
-    box-shadow: 2px 2px 2px #888888;
+    box-shadow: 2px 0px 3px 3px #888888;
     margin-bottom: 5px;
     padding: 0 0 10px 0;
     background-color: rgb(233, 233, 233);
+}
+.w-mobile{
+    width: 150px!important;
+}
+.fs-mobile{
+    font-size: 15px!important;
 }
 .img-item{
     width: 100%;
@@ -56,7 +62,7 @@ span.stock-text {
     background-color: rgb(182, 182, 182)!important;
 }
 .button-buy{
-    font-size: 1.5vw!important;
+    font-size: 1.5vw!;
     width: auto!important;
     height: auto!important;
     padding: 2px!important;

@@ -4,3 +4,18 @@
 .b{
     border:1px solid black;
 }
+.rec.rec-arrow {
+    border-radius: 50%;
+    width: 20px!important;
+    padding: 0!important;
+    background-color: white!important;
+    color: black;
+}
+.rec.rec-arrow:hover {
+    background-color: black!important;
+    color: white!important;
+}
+.rec.rec-arrow:focus{
+    background-color: inherit;
+    color: black!important;
+}

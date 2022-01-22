@@ -46,5 +46,16 @@ h5{
     border-radius: 5px;
     padding: 3px;
 }
+.added-to-cart-mobile{
+    position: absolute;
+    z-index: 100000;
+    background-color: rgb(53, 53, 53)!important;
+    left: -15px;
+    bottom: 40px;
+    font-size: 10px;
+    width: auto;
+    border-radius: 5px;
+    padding: 3px;
+}
 .hidden { opacity: 0; transition: opacity 2s linear;}
 .visible { opacity: 1; transition: opacity 1s linear;}

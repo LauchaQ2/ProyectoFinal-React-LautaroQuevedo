@@ -12,16 +12,16 @@ export default function ItemListContainer(){
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState('all')
     const categories = ['vino', 'cerveza', 'licor','vodka']
-    const [scrollFixed, setScrollFixed] = useState();
+    const [size, setSize] = useState(window.innerWidth);
+    
+            useEffect(()=>{
+            const handleSize = () =>{
+                setSize(window.innerWidth);
+            }
+            window.addEventListener("resize", handleSize)
+            },[])
 
-    useEffect(()=>{
-      const handleScrollY = () =>{
-        setScrollFixed(window.scrollY)
-      }
-      window.addEventListener("scroll", handleScrollY);
-    },[])
-    console.log(scrollFixed)
-
+  
     useEffect(() => {
       getProducts
         .then(data =>{
@@ -37,10 +37,10 @@ export default function ItemListContainer(){
 
       <div className='row index'>
                   <h2 className='titlehome text-center'>NUESTROS PRODUCTOS</h2>
-      <div className='col-md-2 sidebarCat d-flex justify-content-center'>
-      <div className={ scrollFixed > 143 ? 'fixed-top scrolled w-20' : null}>
-            <h1 className='text-left fs-2 border-bottom fw-bold mt-2 mb-2'>CATEGORÍAS</h1>
-              <h5 className='text-left fs-5 mb-3 mr-3'>
+      <div className={size < 500 ? 'col-md-2 sidebarCat d-flex justify-content-center':'col-md-2 sidebarCat d-flex justify-content-center h-auto'}>
+      <div className={size < 500 && 'w-100 d-flex justify-content-around align-items-center h-auto'}>
+            <h1 className={ size > 500 ? 'text-left fs-2 border-bottom fw-bold mt-2 mb-2' : 'fs5 mb-0'}>CATEGORÍAS</h1>
+              <h5 className={size > 500 ? 'text-left fff fs-5 mb-3 mr-3' : 'fs-6 mb-0'}>
                 <Link className='button-category' style={{ color: "#000000" }} onClick={() => { setActiveCategory('all'); } } to={`/category/all`}>
                   Todos
                 </Link>
@@ -48,7 +48,7 @@ export default function ItemListContainer(){
 
               {categories.map((category) => {
                 return (
-                  <h5 className='text-left fs-5 mb-3 mr-3'>
+                  <h5 className={size > 500 ? 'text-left fs-5 mb-3 mr-3' : 'fs-6 mr-3 mb-0'}>
                     <Link 
                       className='button-category'
                       style={{ color: "#000000" }}
@@ -73,7 +73,7 @@ export default function ItemListContainer(){
           </div>
           :
           <div className='col-md-10'>
-          <ItemList products={products} />
+          <ItemList size={size} products={products} />
           </div>
           }
 
