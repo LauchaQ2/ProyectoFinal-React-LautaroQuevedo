@@ -12,6 +12,8 @@ import CartPage from '../../pages/CartPage/CartPage.js';
 import {CartProvider} from '../../context/CartContext';
 import logoHome from '../../assets/YoTomo/logo.svg'
 import 'animate.css';
+import AddProducts from '../AddProducts/AddProducts.js';
+import UserProfile from '../UserProfile/UserProfile.js';
 
 
 export default function AppRouter(){
@@ -38,7 +40,9 @@ export default function AppRouter(){
                 <Route path="/category/:category" element={<ItemListContainer/>}/>
                 <Route path="/aboutus" element={<AboutUsPage/>}/>
                 <Route path="/contact" element={<ContactPage/>}/>
+                <Route path="/addproducts" element={<AddProducts/>}/>
                 <Route path="/product/:id" element={<ItemDetailContainer/>}/>
+                <Route path="/myaccount" element={<UserProfile/>}/>
                 <Route path="/cart" element={<CartPage/>}/>
                 <Route path="/" element={<HomePage/>}/>
                 <Route index element={<HomePage />}/> 

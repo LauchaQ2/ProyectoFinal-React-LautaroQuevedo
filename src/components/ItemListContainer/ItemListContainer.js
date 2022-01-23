@@ -11,7 +11,7 @@ export default function ItemListContainer(){
     const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])
     const [activeCategory, setActiveCategory] = useState('all')
-    const categories = ['vino', 'cerveza', 'licor','vodka']
+    const categories = ['vino', 'cerveza', 'licor','vodka','whisky']
     const [size, setSize] = useState(window.innerWidth);
     
             useEffect(()=>{

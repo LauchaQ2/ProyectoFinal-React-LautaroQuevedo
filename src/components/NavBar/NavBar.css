@@ -11,6 +11,7 @@
 .navb-background{
     background-color: rgb(121, 121, 121)!important;
     z-index: 2!important;
+    padding-left: 0!important;
 }
 .offcanvas{
     width: auto;

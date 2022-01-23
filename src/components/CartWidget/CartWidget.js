@@ -21,7 +21,6 @@ const CartWidget = () => {
         setOpen(!open)
     }
 
-    console.log("products desde agregados al carrito: ", productCarts)
 
     return(
         <>

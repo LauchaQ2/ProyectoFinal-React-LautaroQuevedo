@@ -14,7 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import PayModal from '../PayModal/PayModal';
 import emailjs from 'emailjs-com';
 
-export default function Checkout({open, handleClose, products, total, size}) {
+export default function Checkout({open, handleClose, size}) {
     
     const {productCarts, totalPrice, dataCredit} = useContext(CartContext)
 

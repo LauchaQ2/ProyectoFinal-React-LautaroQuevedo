@@ -5,7 +5,10 @@ const CartContext = createContext();
 const CartProvider = ({children}) => {
     const [productCarts, setProducts] = useState([])
     const [open, setOpen] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
     const [checkOutModal, setCheckOutModal] = useState(false);
+    const [logged, setLogged] = useState(false)
+    const [username, setUsername] = useState("")
     const [dataCredit, setDataCredit] = useState({
         nombre : '',
         numero : '',
@@ -72,7 +75,13 @@ const CartProvider = ({children}) => {
         setCheckOutModal,
         addItem,
         dataCredit,
-        setDataCredit
+        setDataCredit,
+        openLogin,
+        setOpenLogin,
+        logged,
+        setLogged,
+        username,
+        setUsername
     }
     
     return(

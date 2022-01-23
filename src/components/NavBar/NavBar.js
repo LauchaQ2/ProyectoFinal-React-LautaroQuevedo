@@ -13,6 +13,7 @@ import CartContext from '../../context/CartContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import '../../pages/ProductsPage/ProductPage.css'
+import Login from '../Login/Login';
 
 export default function NavBar() {
   const {theme, changeTheme} = useContext(ThemeContext);
@@ -49,6 +50,10 @@ export default function NavBar() {
           <Link to="/aboutus">
             <Button style={{color: "#000000"}}>Nosotros</Button>
           </Link>
+          <Link to="/addproducts">
+            <Button style={{color: "#000000"}}>AddProduct</Button>
+          </Link>
+
           </ul>
 
         </Offcanvas.Body>
@@ -67,6 +72,10 @@ export default function NavBar() {
           <Button style={{color: "#000000"}}>
           <CartWidget/>
           </Button>
+          <Button style={{color: "#000000"}}>
+          <Login/>
+          </Button>
+
         
         </Container>
         </Navbar>
