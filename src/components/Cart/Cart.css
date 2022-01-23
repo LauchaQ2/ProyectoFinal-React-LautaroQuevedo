@@ -37,3 +37,10 @@
 .no-dec:hover{
     color: black;
 }
+.contCart{
+    height: 500px;
+}
+.bg-red{
+    background-color: red!important;
+    border: none!important;
+}

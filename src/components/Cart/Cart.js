@@ -1,15 +1,10 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import './Cart.css';
 import { Link } from "react-router-dom";
-import CircularProgress from '@mui/material/CircularProgress';
 import CartContext from '../../context/CartContext';
-import Modal from 'react-bootstrap/Modal'
 import { Button } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Checkout from '../Checkout/Checkout';
-import ModalCart from '../ModalCart/ModalCart'
-import PayModal from '../PayModal/PayModal';
 
 export default function Cart(){
 
@@ -51,6 +46,7 @@ export default function Cart(){
     })
     return(
         <div className={productCarts.length === 0 ? "container contvoid d-flex align-content-around flex-wrap mt-3" : "container mt-3"}>
+        <div className={productCarts.length < 5 && productCarts.length > 0 ? "container contCart mt-3" : null}>
         {productCarts.length === 0 ?
             <>
                 <div className='container-fluid d-flex justify-content-center'>
@@ -58,7 +54,7 @@ export default function Cart(){
                 </div>
                 <div className='container-fluid d-flex justify-content-center'>
                         <Link to="/category/all">
-                            <Button style={{background: "red", color: "black"}}>¡A comprar!</Button>
+                            <Button className='button-to-products bg-red' style={{background: "red", color: "black"}}>¡A comprar!</Button>
                         </Link>
                 </div>
             </>
@@ -118,10 +114,11 @@ export default function Cart(){
                 size={size}
             />  
                 <Link to={"/category/all"}>
-                    <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2'} variant="contained">SEGUIR COMPRANDO</Button>
+                    <Button className={size > 500 ? 'button-cart': 'button-cart-mobile mt-2 mb-2'} variant="contained">SEGUIR COMPRANDO</Button>
                 </Link>
             </div>
             }
+        </div>
         </div>
     )
 }
