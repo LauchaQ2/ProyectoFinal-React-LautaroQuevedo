@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
 import Carousel from 'react-elastic-carousel';
-import { apiURL } from '../../config';
 import '../Slider/Slider.css'
 import Item from '../Item/Item.js';
 import db from '../../firebaseconfig';
 import { collection, getDocs } from 'firebase/firestore';
-import {Link} from 'react-router-dom';
 
 
 
@@ -21,7 +19,6 @@ export default function Slider(){
         producto.id = doc.id;
        return producto
       });
-      console.log(productosList)
     return productosList;
    }
 

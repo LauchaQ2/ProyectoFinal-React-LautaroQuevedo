@@ -19,7 +19,6 @@ export default function ItemCount({stock, initial, onAdd, size}){
             setAdded("hidden added-to-cart")
             setAddedMobile("hidden added-to-cart-mobile")
           }, 1500);
-          console.log(added)
     }
     
     const addAmount = () => {

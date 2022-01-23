@@ -98,4 +98,3 @@ export default function ItemDetail({ data }) {
 }
 
 
-//                    <h5 className='w'>Stock: {data.stock}</h5>

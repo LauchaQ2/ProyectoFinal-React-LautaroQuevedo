@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Carousel from 'react-elastic-carousel';
 import '../SliderFilter/SliderFilter.css'
 import Item from '../Item/Item.js';
 import './SliderFilter.css'
 
 export default function SliderFilter({offers, title}){
-    console.log(offers)
 
     const breakPoints = [
         { width: 1, itemsToShow: 1 },

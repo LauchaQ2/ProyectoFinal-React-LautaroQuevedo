@@ -23,17 +23,14 @@ export default function Cart(){
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
-        console.log("ABIERTO")
       };
   
       const handleClose = () => {
         setOpen(false);
-        console.log("CERRADO")
       };
 
     const handleCheckout = () =>{
         setCheckOutModal(!checkOutModal)
-        console.log(checkOutModal)
     }
 
     const clear = () =>{

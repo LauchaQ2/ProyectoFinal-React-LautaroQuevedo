@@ -8,7 +8,6 @@ const CartWidget = () => {
     const [showCart, setShowCart ] = useState(false)
 
     useEffect(() => {
-        //console.log("products cartWidget" , products)
     })
     const {productCarts, totalPrice,open, setOpen} = useContext(CartContext)
 
@@ -35,12 +34,4 @@ const CartWidget = () => {
 
 export default CartWidget
 
-    /*
-    return(
-        <>
-        <ShoppingCartIcon onClick={showCart} sx={{ color: "#000" }} fontSize="medium" />
-        {showModal && <ModalCart products={productCarts}/>}
-        </>
-    )
-
-}*/
+   

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import '../CategoriesContainer/CategoriesContainer.css';
-import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { apiURL } from '../../config';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -10,7 +9,6 @@ import CategoryTitle from '../CategoryTitle/CategoryTitle';
 
 export default function CategoriesDetail(){
     const {category} = useParams();
-    console.log(category);
 
 const [loader, setLoader] = useState(true)
     const [products, setProducts] = useState([])

@@ -1,12 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import '../ItemListContainer/ItemListContainer.css';
 import '../ItemList/ItemList.css';
 import Item from '../Item/Item.js';
-import Container from 'react-bootstrap/Nav';
-import Grid from '@mui/material/Grid';
-import Col from 'react-bootstrap/Col'
-import {Link} from 'react-router-dom';
-
 
 export default function ItemList({products,size}){
 

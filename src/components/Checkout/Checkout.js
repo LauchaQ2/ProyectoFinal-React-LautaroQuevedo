@@ -16,7 +16,7 @@ import emailjs from 'emailjs-com';
 
 export default function Checkout({open, handleClose, products, total, size}) {
     
-    const {productCarts, totalPrice, dataCredit, clearCart} = useContext(CartContext)
+    const {productCarts, totalPrice, dataCredit} = useContext(CartContext)
 
      const [formData, setFormData] = useState({
         nombre : '',
@@ -53,7 +53,6 @@ export default function Checkout({open, handleClose, products, total, size}) {
             setInvalid(true)
         }
         setTrimmed(formData.email)
-        console.log(trimmed.email)
         },[formData.email, formData.validationEmail])
 
     const handleChange = (e) => {
@@ -83,7 +82,6 @@ export default function Checkout({open, handleClose, products, total, size}) {
         });}
         else{
             setInvalid(true)
-            console.log("nombre incompleto")
         }
     }
     const form = useRef();

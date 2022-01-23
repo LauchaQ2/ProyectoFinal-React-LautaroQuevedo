@@ -1,6 +1,5 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import './Item.css';
-import imgProduct from '../../assets/fragile.svg'
 import ItemCount from '../ItemCount/ItemCount';
 import {Link} from 'react-router-dom';
 import CartContext from '../../context/CartContext';
@@ -9,7 +8,7 @@ import { Button } from '@mui/material';
 
 export default function Item({data,size}){
 
-    const { addProducts , productCarts, setQuant} = useContext(CartContext)
+    const { addProducts} = useContext(CartContext)
         console.log("data item: ", data)
 
         const itemCart = {
@@ -38,4 +37,3 @@ export default function Item({data,size}){
     )
 }
 
-//            <span className="stock-text">Stock : {data.stock}</span>
