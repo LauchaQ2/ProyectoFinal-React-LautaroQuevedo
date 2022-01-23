@@ -16,17 +16,16 @@ import '../../pages/ProductsPage/ProductPage.css'
 import Login from '../Login/Login';
 
 export default function NavBar() {
-  const {theme, changeTheme} = useContext(ThemeContext);
-  const {products, showProducts} = useContext(CartContext);
   const [show, setShow] = useState(false);
-  const [scrollFixed, setScrollFixed] = useState();
+  const [size, setSize] = useState(window.innerWidth);
+    
+   useEffect(()=>{
+   const handleSize = () =>{
+       setSize(window.innerWidth);
+   }
+   window.addEventListener("resize", handleSize)
+   },[])
 
-  useEffect(()=>{
-    const handleScrollY = () =>{
-      setScrollFixed(window.scrollY)
-    }
-    window.addEventListener("scroll", handleScrollY);
-  },[])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -59,21 +58,21 @@ export default function NavBar() {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <Navbar className='navb-background navb mb-4' bg="shadow p-3" expand="lg">
+      <Navbar className='navb-background navb mb-4 pr-0' bg="shadow p-3" expand="lg">
       <Container fluid className='navb-background'>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className={size < 500 ? "ps-0 pr-0" : null} variant="primary" onClick={handleShow}>
        <MenuIcon />
        </Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/">
-          <img id="logo" src={logo} />
+          <img id={size < 500 ? "logo-mobile" : "logo"} src={logo} />
           </Link>
           </Typography>
-          <Button style={{color: "#000000"}}>
-          <CartWidget/>
+          <Button className={size < 500 ? "padding-0" : null} style={{color: "#000000"}}>
+          <CartWidget size={size}/>
           </Button>
-          <Button style={{color: "#000000"}}>
-          <Login/>
+          <Button className={size < 500 ? "padding-0" : null} style={{color: "#000000"}}>
+          <Login size={size}/>
           </Button>
 
         

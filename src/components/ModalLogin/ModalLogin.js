@@ -65,7 +65,7 @@ export default function ModalLogin({products,showCart}){
     
     return(
 
-    <div className='modalLogin background-page'>
+    <div className={size < 500 ? 'modalLoginMobile background-page' :'modalLogin background-page'}>
                 {logged === true ? 
                             <DialogContent className="h-100">
                                         <Box className={size > 500 ? "d-block h-100" : "h-100"}>
@@ -78,11 +78,11 @@ export default function ModalLogin({products,showCart}){
                         :
                             <>
                             <DialogTitle>Inicio de Sesión</DialogTitle>
-                        <DialogContent className="d-flex justify-content-center">
+                        <DialogContent className={size < 500 ? "d-block text-center" : "d-flex justify-content-center"}>
                             <Box className={size > 500 ? "form-container" : "w-100 form-mobile text-center"} noValidate autoComplete="off" >
                                 <TextField className={size > 500 ? null : "w-100"} label="Usuario" required type="text" name="usuario" variant="outlined" value={newUser.usuario.trim()} onChange={handleChange}/>
                                 <TextField className={size > 500 ? null : "w-100"} label="Contraseña" required type="password" name="contraseña" variant="outlined" value={newUser.contraseña} onChange={handleChange}/>
-                                <span className='mb-3'>¿No tienes cuenta? Registrate aquí</span>
+                                <span className={size < 500 ? "mb-3 fs-6" :'mb-3'}>¿No tienes cuenta? Registrate aquí</span>
                             <Button variant="outlined" onClick={sendOrder}>Ingresar</Button>
                             </Box>
                     </DialogContent>

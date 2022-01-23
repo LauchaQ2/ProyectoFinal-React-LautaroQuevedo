@@ -14,3 +14,19 @@
     border: 1px solid black;
     text-align: center;
 }
+.modalLoginMobile{
+    z-index: 10000000!important;
+    position: fixed;
+    top: 70px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    transition: 0.7s;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border: 1px solid black;
+    text-align: center;
+}

@@ -3,7 +3,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import CartContext from '../../context/CartContext';
 import ModalLogin from '../ModalLogin/ModalLogin'
 
-const Login = () => {
+const Login = ({size}) => {
     const [showCart, setShowCart ] = useState(false)
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const Login = () => {
 
     return(
         <>
-        <PersonIcon onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
+        <PersonIcon className={size < 500 && "widget-mobile"} onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
         {openLogin && <ModalLogin showCart={showCart} total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
         </>
     )

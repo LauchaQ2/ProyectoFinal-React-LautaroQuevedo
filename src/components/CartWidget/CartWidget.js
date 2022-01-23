@@ -4,7 +4,7 @@ import './CartWidget.css'
 import CartContext from '../../context/CartContext';
 import ModalCart from '../ModalCart/ModalCart'
 
-const CartWidget = () => {
+const CartWidget = ({size}) => {
     const [showCart, setShowCart ] = useState(false)
 
     useEffect(() => {
@@ -24,9 +24,9 @@ const CartWidget = () => {
 
     return(
         <>
-        <ShoppingCartIcon onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
+        <ShoppingCartIcon className={size < 500 && "widget-mobile"} onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
         {open && <ModalCart showCart={showCart} total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
-        <span className="number-cart">{totalProducts}</span>
+        <span className={size < 500 ? "number-cart-mobile" : "number-cart"}>{totalProducts}</span>
         </>
     )
 }
