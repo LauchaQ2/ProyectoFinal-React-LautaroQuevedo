@@ -49,8 +49,8 @@ export default function NavBar() {
           <Link to="/aboutus">
             <Button style={{color: "#000000"}}>Nosotros</Button>
           </Link>
-          <Link to="/addproducts">
-            <Button style={{color: "#000000"}}>AddProduct</Button>
+          <Link className="invisible" to="/addproducts">
+            <Button className="" style={{color: "#000000"}}>AddProduct</Button>
           </Link>
 
           </ul>
