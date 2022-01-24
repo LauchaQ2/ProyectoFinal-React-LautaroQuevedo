@@ -71,7 +71,7 @@ export default function NavBar() {
           <Button className={size < 500 ? "padding-0" : null} style={{color: "#000000"}}>
           <CartWidget size={size}/>
           </Button>
-          <Button className={size < 500 ? "padding-0" : null} style={{color: "#000000"}}>
+          <Button className={size < 500 ? "padding-0 ms-1" : null} style={{color: "#000000"}}>
           <Login size={size}/>
           </Button>
 
