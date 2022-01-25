@@ -9,7 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ItemDetail({ data }) {
         const [loader, setLoader] = useState(true)
-        const { addProducts , productCarts, setQuant} = useContext(CartContext)
+        const { addProducts } = useContext(CartContext)
         const [size, setSize] = useState(window.innerWidth);
     
             useEffect(()=>{
@@ -28,8 +28,6 @@ export default function ItemDetail({ data }) {
         }
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     setTimeout( () => {
         setLoader(false)
@@ -53,7 +51,7 @@ export default function ItemDetail({ data }) {
             ? 
             <div className="row">
                     <div className="col-6 detail text-center">
-                        <img className="img-fluid img-border" src={data.pictureURL} />
+                        <img className="img-fluid img-border" alt={data.title} src={data.pictureURL} />
                     </div>
                     <div className="col-6 detail centrado justify-content-center text-center">
                         <h1 className='w'>{data.title}</h1>
@@ -74,7 +72,7 @@ export default function ItemDetail({ data }) {
                 :
                 <div className="container">
                     <div className="container">
-                        <img className="img-fluid img-border" src={data.pictureURL} />
+                        <img alt={data.title} className="img-fluid img-border" src={data.pictureURL} />
                     </div>
                     <div className="container d-flex justifiy-content-center flex-wrap">
                         <h1 className='w-100 fw-bold fs-2'>{data.title}</h1>

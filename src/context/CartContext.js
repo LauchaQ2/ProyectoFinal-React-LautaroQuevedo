@@ -1,4 +1,7 @@
 import { createContext, useState } from "react";
+import { collection, getDocs , query, where } from 'firebase/firestore';
+import db from '../../src/firebaseconfig';
+
 
 const CartContext = createContext();
 
@@ -65,7 +68,25 @@ const CartProvider = ({children}) => {
     }
     }
 
+    async function getOrderByUsername(){
+        const q = query(collection(db, "ordenes"), where("username", "==", username));
     
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            if(requestOrders === false){
+            console.log(doc.id)
+            const obj = doc.id
+            ordersByUser.push(obj)
+            console.log(ordersByUser)
+            setRequestOrders(true)
+            console.log(requestOrders)
+        }else{
+            return null;
+        }
+        
+        });
+      
+    }
 
 
     const data = {
@@ -92,7 +113,8 @@ const CartProvider = ({children}) => {
         itemsByOrder,
         setItemsByOrder,
         requestOrders, 
-        setRequestOrders
+        setRequestOrders,
+        getOrderByUsername
     }
     
     return(

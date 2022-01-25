@@ -9,7 +9,6 @@ import { Button } from '@mui/material';
 export default function Item({data,size}){
 
     const { addProducts} = useContext(CartContext)
-        console.log("data item: ", data)
 
         const itemCart = {
             title: data.title,
@@ -25,7 +24,7 @@ export default function Item({data,size}){
 
     return(
 
-        <div className={size < 500 ? "product w-mobile" : "product"}>
+        <div key={data.id} className={size < 500 ? "product w-mobile" : "product"}>
             <img className="img-item" src={data.pictureURL} alt={data.title} />
             <h5 className="fs-6 ms-3 mt-2 fw-bold title word-wrap">{data.title}</h5>
             <h4 className="fs-8 ms-3 price">${data.price}</h4>

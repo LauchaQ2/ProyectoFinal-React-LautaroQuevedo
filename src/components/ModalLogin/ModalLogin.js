@@ -1,6 +1,5 @@
-import React, {useState,useContext, useRef, useEffect, useLayoutEffect} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
@@ -103,7 +102,7 @@ export default function ModalLogin({products,showCart}){
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-        if(requestOrders == false){
+        if(requestOrders === false){
         console.log(doc.id)
         const obj = doc.id
         ordersByUser.push(obj)
@@ -153,7 +152,7 @@ export default function ModalLogin({products,showCart}){
                                 <DialogContent className="h-100">
                                         <Box className={size > 500 ? "d-block h-100" : "h-100"}>
                                         <Link to={`/myaccount`}>
-                                        <Button variant="outlined">ir a mi cuenta</Button>
+                                        <Button onClick={getOrderByUsername} variant="outlined">ir a mi cuenta</Button>
                                         </Link>
                                         <Button variant="outlined" onClick={closeSession}>
                                         <Link to={`/`}>Cerrar Sesión</Link>
@@ -177,7 +176,7 @@ export default function ModalLogin({products,showCart}){
                                 <DialogContent className="h-100">
                                         <Box className={size > 500 ? "d-block h-100" : "h-100"}>
                                         <Link to={`/myaccount`}>
-                                        <Button variant="outlined">ir a mi cuenta</Button>
+                                        <Button onClick={getOrderByUsername} variant="outlined">ir a mi cuenta</Button>
                                         </Link>
                                         
                                         <Button variant="outlined" onClick={closeSession}>

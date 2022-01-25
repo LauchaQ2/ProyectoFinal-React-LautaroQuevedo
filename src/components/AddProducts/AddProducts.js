@@ -1,20 +1,15 @@
-import React, {useState,useContext, useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import db from '../../firebaseconfig';
 import { collection, addDoc } from 'firebase/firestore';
-import CartContext from '../../context/CartContext';
 import '../Checkout/Checkout.css'
-import {FormControl } from '@mui/material';
-import InputLabel from '@mui/material/InputLabel';
 
-export default function AddProducts({open, handleClose, size}) {
+export default function AddProducts({size}) {
     
-    const {productCarts, totalPrice, dataCredit} = useContext(CartContext)
 
      const [newProduct, setNewProduct] = useState({
         category : '',

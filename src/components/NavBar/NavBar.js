@@ -8,7 +8,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Container } from 'react-bootstrap';
 import CartWidget from '../CartWidget/CartWidget';
 import '../NavBar/NavBar.css';
-import ThemeContext from '../../context/ThemeContext';
 import CartContext from '../../context/CartContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -18,7 +17,10 @@ import Login from '../Login/Login';
 export default function NavBar() {
   const [show, setShow] = useState(false);
   const [size, setSize] = useState(window.innerWidth);
-    
+  const {username} = useContext(CartContext)
+
+  console.log(username);
+
    useEffect(()=>{
    const handleSize = () =>{
        setSize(window.innerWidth);
@@ -49,7 +51,7 @@ export default function NavBar() {
           <Link to="/aboutus">
             <Button style={{color: "#000000"}}>Nosotros</Button>
           </Link>
-          <Link className="invisible" to="/addproducts">
+          <Link className={username === "LauchaQ2" ? "visible" : "invisible"} to="/addproducts">
             <Button className="" style={{color: "#000000"}}>AddProduct</Button>
           </Link>
 
@@ -65,7 +67,7 @@ export default function NavBar() {
        </Button>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/">
-          <img id={size < 500 ? "logo-mobile" : "logo"} src={logo} />
+          <img alt="YoTomo" id={size < 500 ? "logo-mobile" : "logo"} src={logo} />
           </Link>
           </Typography>
           <Button className={size < 500 ? "padding-0" : null} style={{color: "#000000"}}>

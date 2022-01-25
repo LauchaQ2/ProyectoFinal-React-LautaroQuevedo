@@ -30,7 +30,7 @@ export default function AppRouter(){
         initate
         ?
       <div className='homeAnimated'>
-        <img className='img-fluid animate__animated animate__flipInX' id='logoAnimated' src={logoHome} />
+        <img className='img-fluid animate__animated animate__flipInX' alt="logo-YoTomo" id='logoAnimated' src={logoHome} />
       </div>
       :
         <BrowserRouter>

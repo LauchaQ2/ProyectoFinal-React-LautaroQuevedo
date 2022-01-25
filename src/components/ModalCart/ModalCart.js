@@ -28,7 +28,6 @@ export default function ModalCart({products,showCart}){
 
     const handleClose = () => {
         setOpen(!open);
-        console.log(showCart)
     }
     
 

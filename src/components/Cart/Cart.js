@@ -9,7 +9,7 @@ import Checkout from '../Checkout/Checkout';
 export default function Cart(){
 
     const [size, setSize] = useState(window.innerWidth);
-    
+
     useEffect(()=>{
       const handleSize = () =>{
         setSize(window.innerWidth);
@@ -18,7 +18,7 @@ export default function Cart(){
     },[])
 
     const [total, setTotal] = useState([])
-    const { productCarts, clearCart, removeItem, totalPrice, checkOutModal, setCheckOutModal, addItem} = useContext(CartContext)
+    const { productCarts, clearCart, removeItem, totalPrice, addItem} = useContext(CartContext)
 
     const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
@@ -27,16 +27,13 @@ export default function Cart(){
   
       const handleClose = () => {
         setOpen(false);
+        if(productCarts.length!==0){
+            clearCart();
+            setTotal([]);
+        }
       };
 
-    const handleCheckout = () =>{
-        setCheckOutModal(!checkOutModal)
-    }
 
-    const clear = () =>{
-        clearCart();
-        setTotal([]);
-    } 
      productCarts.map((productCart) => {
         const tot = productCart.price * productCart.quantity
         total.push(tot);

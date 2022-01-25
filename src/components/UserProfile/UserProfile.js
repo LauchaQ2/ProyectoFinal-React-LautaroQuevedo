@@ -1,19 +1,16 @@
 import React, {useState, useEffect,useContext} from 'react';
 import '../Footer/Footer.css'
 import CartContext from '../../context/CartContext';
-import { collection, getDocs, getDoc, doc , query, where } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
 import db from '../../firebaseconfig';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 
 
-
-
-
 export default function UserProfile(){
     const [size, setSize] = useState(window.innerWidth);
-    const {logged, setLogged, username, setUsername, ordersByUser, setOrdersByUser,itemsByOrder, setItemsByOrder} = useContext(CartContext)
+    const { username, ordersByUser,requestOrders , getOrderByUsername,itemsByOrder, setItemsByOrder} = useContext(CartContext)
 
     const [orderID, setOrderID] = useState({
         orderID : ''
@@ -30,6 +27,11 @@ export default function UserProfile(){
     window.addEventListener("resize", handleSize)
     },[])
 
+    const getOrders = () =>{
+        if(requestOrders===false){
+            getOrderByUsername()
+        }
+    }
     
     async function getOrderByID(){
         const docRef = doc(db, "ordenes", id);
@@ -51,12 +53,12 @@ export default function UserProfile(){
         console.log(orderID.orderID)
     }
 
-    
+    console.log(orderByID)
 
 return(
-    <div className={size > 500 ? "mb-3" : 'contvoidHome d-block text-center'}>
-    <h1 className='w-100 text-center'>Bienvenido a tu perfil, {username}</h1>
-
+    <div className={size > 500 ? "mb-3" : ' h-100 d-block text-center'}>
+    <h1 className={size > 500 ? 'w-100 text-center' : 'w-100 text-center fs-2'}>Bienvenido a tu perfil {username}</h1>
+    <Button onClick={getOrders}>Refrescar historial de ordenes</Button>
     <h3 className='w-100 ms-2 mt-5'>Tus ordenes por ID:</h3>
     
     {
@@ -66,7 +68,7 @@ return(
         :
         <><div className='h-100 container-fluid d-block flex-wrap'>
                     <ul className='list-group'>
-                        <div className={size > 500 ? 'd-flex flex-wrap' : 'd-block'}>
+                        <div className={size > 500 ? 'h-100 d-flex flex-wrap' : 'h-100 d-block'}>
                         {ordersByUser.map(orderByUser => {
                             return (
 
@@ -79,24 +81,33 @@ return(
                         <TextField className={size > 500 ? null : "w-100"} label="Orden ID" required type="text" value={orderID.orderID} onChange={handleChange} name="orderID" variant="outlined"/>
                         <Button onClick={getOrderByID}>Buscar orden</Button>
                         </form>
-                        <div className='container-fluid'>
-                            <div className="row">
+                        { orderByID != ""
+                        ?
+
+                        <div className='h-100 container-fluid'>
                             <div className='col-md-6'>
                         <p className='fw-bold fs-4'>Información de tu orden</p>
                         <li className='list-group-item'>Usuario: {orderByID.username}</li>
                         <li className='list-group-item'>Total de la orden: ${orderByID.total}</li>
                         </div>
-                        <div className='col-md-6'>
+                        <div className='h-100 col-md-12'>
                         <p className='fw-bold fs-4'>Detalle de productos</p>
                         {  itemsByOrder.map(item=>{
                             return(
-                            <li className='list-group-item'>{item.title} - ${item.price}</li>
+                                <div className='container-fluid detail border-box mb-2 d-flex justify-content-between align-items-center' key={item.id}>
+                                <img className="img-fluid img-cart" src={item.pictureURL} alt="imagen del producto" />
+                                <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>{item.title}</p>
+                                <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>{item.quantity}</p>
+                                <p className={size > 500 ? 'fontsizeCart bold' : 'fs-7 w-25 text-center text-wrap'}>${item.quantity*item.price}</p>
+                                </div>
                             )
                         })
                         }
                         </div>
                         </div>
-                        </div>
+                        :
+                        null
+                          }
                     </ul>
                 </div>
                 </>

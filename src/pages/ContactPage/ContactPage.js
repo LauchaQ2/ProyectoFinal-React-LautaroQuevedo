@@ -19,10 +19,10 @@ export default function ContactPage(){
   return (
     <>
     <div className='container-fluid d-flex mt-2 mb-2 justify-content-around'>
-      <img className='logo-contact img-fluid' src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
-      <img className='logo-contact img-fluid' src='https://i.ibb.co/jh7FQCC/facebook-1.png'/>
-      <img className='logo-contact img-fluid' src='https://i.ibb.co/F037ZqW/instagram.png'/>
-      <img className='logo-contact img-fluid' src='https://i.ibb.co/yhKj7T9/gorjeo.png'/>
+      <img className='logo-contact img-fluid' alt="logo-whatsapp" src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
+      <img className='logo-contact img-fluid' alt="logo-facebook"src='https://i.ibb.co/jh7FQCC/facebook-1.png'/>
+      <img className='logo-contact img-fluid' alt="logo-instagram"src='https://i.ibb.co/F037ZqW/instagram.png'/>
+      <img className='logo-contact img-fluid' alt="logo-gorjeo"src='https://i.ibb.co/yhKj7T9/gorjeo.png'/>
     </div>
     
     <form className='' ref={form} onSubmit={sendEmail}>

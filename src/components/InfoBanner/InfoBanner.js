@@ -25,7 +25,7 @@ return(
                 <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
                         <a target="_blank" href='https://walink.co/63cb67'>
-                            <img className='logo-wp' src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
+                            <img className='logo-wp' alt="logo-whatsapp" src="https://i.ibb.co/chfL26G/whatsapp-1.png" />
                         </a>
                     </div>
                     <div className='text-center mt-2'>
@@ -36,7 +36,7 @@ return(
 
                 <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <img className='logo-wp' src="https://i.ibb.co/KKZ5FF5/debit-card.png" />
+                        <img className='logo-wp' alt="logo-whatsapp" src="https://i.ibb.co/KKZ5FF5/debit-card.png" />
                     </div>
                     <div className='text-center mt-2'>
                         <p className='text-center d-flex align-items-center'>Pagá como quieras</p>
@@ -46,7 +46,7 @@ return(
                 
                 <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <img className='logo-wp' src="https://i.ibb.co/wh3JCxH/shield.png" />
+                        <img className='logo-wp' alt="logo-whatsapp" src="https://i.ibb.co/wh3JCxH/shield.png" />
                     </div>
                     <div className='text-center mt-2'>
                         <p className='text-center d-flex align-items-center'>Comprá con seguridad</p>
@@ -74,7 +74,7 @@ return(
             <div className='box2'>
             <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <img className='logo-wp' src="https://i.ibb.co/KKZ5FF5/debit-card.png" />
+                        <img className='logo-wp' alt="logo-whatsapp" src="https://i.ibb.co/KKZ5FF5/debit-card.png" />
                     </div>
                     <div className='text-center mt-2'>
                         <p className='text-center d-flex align-items-center'>Pagá como quieras</p>
@@ -85,7 +85,7 @@ return(
             <div className='box2'>
             <div className='col-sm-4 box d-flex justify-content-around align-content-center'>
                     <div className='d-flex justify-content-center align-items-center'>
-                        <img className='logo-wp' src="https://i.ibb.co/wh3JCxH/shield.png" />
+                        <img className='logo-wp' alt="logo-whatsapp" src="https://i.ibb.co/wh3JCxH/shield.png" />
                     </div>
                     <div className='text-center mt-2'>
                         <p className='text-center d-flex align-items-center'>Comprá con seguridad</p>
