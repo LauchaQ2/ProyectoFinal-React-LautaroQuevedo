@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 
 const CartContext = createContext();
 
@@ -9,6 +9,9 @@ const CartProvider = ({children}) => {
     const [checkOutModal, setCheckOutModal] = useState(false);
     const [logged, setLogged] = useState(false)
     const [username, setUsername] = useState("")
+    const [ordersByUser, setOrdersByUser] = useState([])
+    const [itemsByOrder, setItemsByOrder] = useState([])
+    const [requestOrders, setRequestOrders] = useState(false)
     const [dataCredit, setDataCredit] = useState({
         nombre : '',
         numero : '',
@@ -62,6 +65,8 @@ const CartProvider = ({children}) => {
     }
     }
 
+    
+
 
     const data = {
         clearCart,
@@ -81,7 +86,13 @@ const CartProvider = ({children}) => {
         logged,
         setLogged,
         username,
-        setUsername
+        setUsername,
+        ordersByUser, 
+        setOrdersByUser,
+        itemsByOrder,
+        setItemsByOrder,
+        requestOrders, 
+        setRequestOrders
     }
     
     return(

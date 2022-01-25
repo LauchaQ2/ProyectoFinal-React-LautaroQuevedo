@@ -1,4 +1,4 @@
-import React, {useState,useContext, useRef, useEffect} from 'react';
+import React, {useState,useContext, useRef, useEffect, useLayoutEffect} from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import db from '../../firebaseconfig';
-import {doc,getDoc, collection, addDoc, setDoc  } from 'firebase/firestore';
+import {doc,getDoc, collection, getDocs, setDoc , query, where } from 'firebase/firestore';
 import CartContext from '../../context/CartContext';
 import '../Checkout/Checkout.css'
 import './ModalLogin.css'
@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 export default function ModalLogin({products,showCart}){
       
 
-    const {logged, setLogged, username, setUsername} = useContext(CartContext)
+    const {logged, setLogged, username, setUsername, ordersByUser, setOrdersByUser,requestOrders, setRequestOrders,setItemsByOrder} = useContext(CartContext)
     const [noUser, setNoUser] = useState(false)
     const [userIncorrect, setUserIncorrect] = useState(false)
 
@@ -61,6 +61,7 @@ export default function ModalLogin({products,showCart}){
         }
         if(userRegistered.usuario === docSnap.data().usuario && userRegistered.contraseña === docSnap.data().contraseña){
             setLogged(true)
+            setUsername(docSnap.data().usuario)
         }
         else{
             console.log("No coinciden")
@@ -68,19 +69,20 @@ export default function ModalLogin({products,showCart}){
         }
     }
 
+    
 
 
 
-   const sendOrder = (e) => {
+   const sendUser = (e) => {
        let usuario = {}
        usuario.usuario = newUser.usuario
        usuario.contraseña = newUser.contraseña
-       pushOrder(usuario)
+       pushUser(usuario)
        setLogged(true)
        setUsername(usuario.usuario)
        }
 
-   const pushOrder = async(usuario) => {
+   const pushUser = async(usuario) => {
        const docRef = doc(db, 'users', usuario.usuario)
        const user = usuario
        await setDoc(docRef,user);
@@ -90,8 +92,40 @@ export default function ModalLogin({products,showCart}){
    const closeSession = () =>{
        setLogged(false)
        setUserIncorrect(false)
+       setOrdersByUser([])
+       setUsername("")
+       setRequestOrders(false)
+       setItemsByOrder([])
    }
+
+   async function getOrderByUsername(){
+    const q = query(collection(db, "ordenes"), where("username", "==", username));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        if(requestOrders == false){
+        console.log(doc.id)
+        const obj = doc.id
+        ordersByUser.push(obj)
+        console.log(ordersByUser)
+        setRequestOrders(true)
+        console.log(requestOrders)
+    }else{
+        return null;
+    }
     
+    });
+  
+}
+    useEffect(()=>{
+        if(requestOrders===false){
+            getOrderByUsername()
+        }
+    },[])
+    
+    console.log(requestOrders)
+    console.log(ordersByUser)
+   
     return(
 
     <div className={size < 500 ? 'modalLoginMobile background-page' :'modalLogin background-page'}>
@@ -121,7 +155,9 @@ export default function ModalLogin({products,showCart}){
                                         <Link to={`/myaccount`}>
                                         <Button variant="outlined">ir a mi cuenta</Button>
                                         </Link>
-                                        <Button variant="outlined" onClick={closeSession}>Cerrar Sesión</Button>
+                                        <Button variant="outlined" onClick={closeSession}>
+                                        <Link to={`/`}>Cerrar Sesión</Link>
+                                        </Button>
                                         </Box>
                                 </DialogContent>   
                 }
@@ -134,7 +170,7 @@ export default function ModalLogin({products,showCart}){
                     <Box className={size > 500 ? "form-container" : "w-100 form-mobile text-center"} noValidate autoComplete="off">
                         <TextField className={size > 500 ? null : "w-100"} label="Usuario" required type="text" name="usuario" variant="outlined" value={newUser.usuario.trim()} onChange={handleChange} />
                         <TextField className={size > 500 ? null : "w-100"} label="Contraseña" required type="password" name="contraseña" variant="outlined" value={newUser.contraseña} onChange={handleChange} />
-                        <Button variant="outlined" onClick={sendOrder}>Crear cuenta</Button>
+                        <Button variant="outlined" onClick={sendUser}>Crear cuenta</Button>
                     </Box>
                 </DialogContent></>
                 :
@@ -143,7 +179,11 @@ export default function ModalLogin({products,showCart}){
                                         <Link to={`/myaccount`}>
                                         <Button variant="outlined">ir a mi cuenta</Button>
                                         </Link>
-                                        <Button variant="outlined" onClick={closeSession}>Cerrar Sesión</Button>
+                                        
+                                        <Button variant="outlined" onClick={closeSession}>
+                                        <Link to={`/`}>Cerrar Sesión</Link>
+                                        </Button>
+                                        
                                         </Box>
                                 </DialogContent>   
                 }

@@ -37,7 +37,7 @@ export default function HomePage(){
     return(
       <>
       {loader ? 
-      <div className="container contvoid d-flex align-content-around flex-wrap mt-3">
+      <div className="container contvoidHome d-flex align-content-around flex-wrap mt-3">
         <CircularProgress/>
       </div>
       :

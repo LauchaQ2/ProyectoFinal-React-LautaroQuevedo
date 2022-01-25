@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import db from '../../firebaseconfig';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, setDoc } from 'firebase/firestore';
 import CartContext from '../../context/CartContext';
 import '../Checkout/Checkout.css'
 import { MenuItem, Select, FormControl } from '@mui/material';
@@ -16,7 +16,7 @@ import emailjs from 'emailjs-com';
 
 export default function Checkout({open, handleClose, size}) {
     
-    const {productCarts, totalPrice, dataCredit} = useContext(CartContext)
+    const {productCarts, totalPrice, dataCredit, username, clearCart} = useContext(CartContext)
 
      const [formData, setFormData] = useState({
         nombre : '',
@@ -29,6 +29,7 @@ export default function Checkout({open, handleClose, size}) {
         validationEmail : ''
     })
     const [orderId, setOrderId] = useState(null)
+    const [userBuyerId, setUserBuyerId] = useState(null)
     const [payMethod, setPayMethod] = useState("")
     const [invalid, setInvalid] = useState(false)
 
@@ -67,6 +68,7 @@ export default function Checkout({open, handleClose, size}) {
         if(formData.email === formData.validationEmail && formData.nombre != "" && formData.telefono != "" && formData.email != "" && formData.validationEmail != "" && payMethod != ""){
         let fechaActual = new Date();
         let order = {}
+        order.username = username
         order.buyer = formData
         order.items = productCarts
         order.total = totalPrice
@@ -97,7 +99,9 @@ export default function Checkout({open, handleClose, size}) {
         const orderFirebase = collection(db, 'ordenes')
         const orden = await addDoc(orderFirebase, order)
         setOrderId(orden.id)
+        clearCart()
     }
+    
     const formPreventDefault = (e) =>{
         e.preventDefault();
       }
