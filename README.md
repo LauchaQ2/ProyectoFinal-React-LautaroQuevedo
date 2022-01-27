@@ -1,6 +1,6 @@
 ﻿# Emprendimiento #YoTomo E-Commerce - Proyecto Final CoderHouse.
 
-Se muestran las diferentes opciones de bebidas alcohólicas que tiene el usuario para realizar la compra.
+YoTomo es un proyecto e-commerce donde la sencillez y la agilidad, a la hora de ordenar todo tipo de bebidas alcohólicas, son las características principales para asegurar que el cliente disfrute de una experiencia sin precedentes.
 
 # Instalación
 
@@ -10,21 +10,25 @@ Luego de clonar el repositorio, debe instalar la aplicacion mediante "npm instal
 
 - React
 - React-Router-DOM 
-- Bootstrap / React Boostrap 
-- React-Hook-Form 
-- Firebase.
+- Bootstrap / React Boostrap
+- Material UI
+- Firebase
+- EmailJs
+- React-Elastic-Carousel
 
 # Descripción del proyecto
 - El archivo App contiene las rutas del e-commerce.
-- La carpeta components contiene los componentes utilizados dentro de la app. 
+- La carpeta componentes contiene los componentes utilizados dentro de la app. 
 
 # Uso de la app
 
-- Ingresando a la pagina web, el usuario podra ver todos los productos disponibles. 
-- Clickeando en ver detalle, podra ingresar la cantidad de productos que quiere, o volver a la pagina de inicio para solicitar otro producto.
+- Ingresando a la pagina web, el usuario deberá tocar en el icono de las tres rayas y luego en "Productos" para visualizar todos los productos disponibles.
+- Otra forma de visualizar todos los productos es yendo al final de la página de inicio y tocar en el botón de "VER TODOS LOS PRODUCTOS".
+- En cada item de producto, el usuario podrá aumentar o disminuir la cantidad de productos que quiera adquirir y al clickear en el botón de carrito se añadirán a la potencial orden.
+El usuario también podrá tocar en "Detalles" para visualizar más información correspondiente al producto.
 - Cada producto agregado se ve en el carrito, al que se accede haciendo click en el icono del mismo (arriba a la derecha.)
-- Para realizar la compra, debe ingresar al carrito, clickar en confirmar compra, y completar el formulario con sus datos.
-- Desde allí se recibira la orden de compra en la base de firebase.
+- Para realizar la compra, debe ingresar al carrito, clickar en "INICIAR COMPRA", y será redirigido al detalle final de la compra donde el usuario al tocar el botón de "COMPRAR" deberá completar el formulario con sus datos.
+- Desde allí el usuario recibirá el ID de su orden de compra y la misma será enviada a la base de datos de Firebase.
 
 # Demo
 
