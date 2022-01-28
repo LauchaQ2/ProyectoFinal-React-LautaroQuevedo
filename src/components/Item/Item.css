@@ -17,6 +17,7 @@
     margin-bottom: 5px;
     padding: 0 0 10px 0;
     background-color: rgb(233, 233, 233);
+    margin-inline: 3px!important;
 }
 .w-mobile{
     width: 150px!important;
