@@ -1,9 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState,useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import './ContactPage.css'
+import './ContactPage.css';
+import ContactModal from '../../components/ContactModal/ContactModal';
+
 
 export default function ContactPage(){
   const form = useRef();
+  const [delivered, setDelivered] = useState(false)
+  const [size, setSize] = useState(window.innerWidth);
+  const [open, setOpen] = useState(false);
+
+    
+  useEffect(()=>{
+   const handleSize = () =>{
+       setSize(window.innerWidth);
+   }
+   window.addEventListener("resize", handleSize)
+   },[])
+
+   const handleClickOpen = () =>{
+    setDelivered(true)
+    setOpen(true);
+   }
+   const handleClose = () => {
+    setOpen(false);
+    }
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -11,6 +33,8 @@ export default function ContactPage(){
     emailjs.sendForm('service_obghm38', 'template_u9c1xzq', form.current, 'user_YCFq6W7ZeLhBZ6dFS68j4')
     .then((result) => {
           console.log(result.text);
+          setDelivered(true)
+          console.log(delivered)
       }, (error) => {
           console.log(error.text);
       });
@@ -25,8 +49,8 @@ export default function ContactPage(){
       <img className='logo-contact img-fluid' alt="logo-gorjeo"src='https://i.ibb.co/yhKj7T9/gorjeo.png'/>
     </div>
     
-    <form className='' ref={form} onSubmit={sendEmail}>
-    <div className='container h-px w-50 d-flex justify-content-center flex-wrap'>
+    <form className='w-100' ref={form} onSubmit={sendEmail}>
+    <div className='container-fluid h-px w-50 d-flex justify-content-center flex-wrap'>
         <div className='d-block w-100'>
           <label className='w-100'>Nombre</label>
           <input className='w-100 form-bg' type="text" name="nombre" />
@@ -45,9 +69,14 @@ export default function ContactPage(){
           <label  className='w-100'>Message</label>
           <textarea className='w-100 form-bg message-area' name="message" />
         </div>
-        <input className="w-100 mb-3" type="submit" value="Send" />
+        <input className="w-100 mb-3" onClick={handleClickOpen} type="submit" value="Send" />
       </div>
       </form>
-      </>
+      <ContactModal
+                open={open} 
+                handleClose={handleClose} 
+                size={size}
+            />        
+    </>
   );
 };
