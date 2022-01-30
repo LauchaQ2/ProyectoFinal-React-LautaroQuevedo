@@ -6,7 +6,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Link } from "react-router-dom";
 
 
-export default function ModalCart({products,showCart}){
+export default function ModalCart({products}){
       
     const {clearCart,removeItem, totalPrice,open, setOpen, addItem} = useContext(CartContext)
 
@@ -24,7 +24,6 @@ export default function ModalCart({products,showCart}){
     const clear = () =>{
         clearCart();
     }
-    const [show, setShow] = useState(showCart);
 
     const handleClose = () => {
         setOpen(!open);

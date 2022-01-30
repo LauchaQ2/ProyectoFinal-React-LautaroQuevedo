@@ -34,7 +34,7 @@ export default function ContactPage(){
         <div className='container w-100 ps-0 pr-0 d-flex justify-content-around'>
         <div className='d-block ms-0 ps-0 w-50'>
           <label className='w-100'>Email</label>
-          <input className='w-100 form-bg' type="email" name="mail" />
+          <input className='w-100 form-bg' type="email" name="email" />
         </div>
         <div className='d-block w-50'>
           <label className='w-100'>Telefono</label>

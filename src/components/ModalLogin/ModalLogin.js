@@ -12,7 +12,7 @@ import './ModalLogin.css'
 import { Link } from 'react-router-dom';
 
 
-export default function ModalLogin({products,showCart}){
+export default function ModalLogin({products}){
       
 
     const {logged, setLogged, username, setUsername, ordersByUser, setOrdersByUser,requestOrders, setRequestOrders,setItemsByOrder} = useContext(CartContext)
@@ -79,6 +79,7 @@ export default function ModalLogin({products,showCart}){
        pushUser(usuario)
        setLogged(true)
        setUsername(usuario.usuario)
+       setNoUser(false)
        }
 
    const pushUser = async(usuario) => {

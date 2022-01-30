@@ -27,7 +27,6 @@ export default function ItemDetail({ data }) {
             quantity: 1,
         }
 
-    const [show, setShow] = useState(false);
 
     setTimeout( () => {
         setLoader(false)

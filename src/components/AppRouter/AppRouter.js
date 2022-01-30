@@ -14,6 +14,8 @@ import logoHome from '../../assets/YoTomo/logo.svg'
 import 'animate.css';
 import AddProducts from '../AddProducts/AddProducts.js';
 import UserProfile from '../UserProfile/UserProfile.js';
+import Error404Page from '../../pages/Error404Page/Error404Page.js';
+
 
 
 export default function AppRouter(){
@@ -45,6 +47,7 @@ export default function AppRouter(){
                 <Route path="/myaccount" element={<UserProfile/>}/>
                 <Route path="/cart" element={<CartPage/>}/>
                 <Route path="/" element={<HomePage/>}/>
+                <Route path='*' element ={<Error404Page/>}/>
                 <Route index element={<HomePage />}/> 
                 </Routes>
                 </CartProvider>

@@ -1,11 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useEffect, useContext} from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './CartWidget.css'
 import CartContext from '../../context/CartContext';
 import ModalCart from '../ModalCart/ModalCart'
 
 const CartWidget = ({size}) => {
-    const [showCart, setShowCart ] = useState(false)
 
     useEffect(() => {
     })
@@ -25,7 +24,7 @@ const CartWidget = ({size}) => {
     return(
         <>
         <ShoppingCartIcon className={size < 500 && "widget-mobile"} onClick={openCart} sx={{ color: "#000" }} fontSize="medium" />
-        {open && <ModalCart showCart={showCart} total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
+        {open && <ModalCart total={totalPrice} totalProducts={totalProducts} products={productCarts}/>}
         <span className={size < 500 ? "number-cart-mobile" : "number-cart"}>{totalProducts}</span>
         </>
     )

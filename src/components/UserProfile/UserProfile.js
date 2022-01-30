@@ -81,7 +81,7 @@ return(
                         <TextField className={size > 500 ? null : "w-100"} label="Orden ID" required type="text" value={orderID.orderID} onChange={handleChange} name="orderID" variant="outlined"/>
                         <Button onClick={getOrderByID}>Buscar orden</Button>
                         </form>
-                        { orderByID != ""
+                        { orderByID !== ""
                         ?
 
                         <div className='h-100 container-fluid'>
