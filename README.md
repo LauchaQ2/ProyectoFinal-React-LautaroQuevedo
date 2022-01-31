@@ -4,7 +4,7 @@ YoTomo es un proyecto e-commerce donde la sencillez y la agilidad, a la hora de 
 
 # Instalación
 
-Para clonar el repositorio, debe ingresar en la console "git clone https://github.com/LauchaQ2/ProyectoFinal-React-LautaroQuevedo.git". Luego de clonar el repositorio, debe instalar la aplicacion mediante "npm install react-app" e iniciarla con "npm start". Se abrira el navegador http://localhost:3000 para su visualizacion.
+Para clonar el repositorio, debe ingresar en la consola lo siguiente "git clone https://github.com/LauchaQ2/ProyectoFinal-React-LautaroQuevedo.git". Luego de clonar el repositorio, debe instalar la aplicacion mediante "npm install react-app" e iniciarla con "npm start". Se abrira el navegador http://localhost:3000 para su visualizacion.
 
 # Dependencias
 
