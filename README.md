@@ -28,7 +28,7 @@ Para clonar el repositorio, debe ingresar en la consola lo siguiente "git clone 
 El usuario también podrá tocar en "Detalles" para visualizar más información correspondiente al producto.
 - Cada producto agregado se ve en el carrito, al que se accede haciendo click en el icono del mismo (arriba a la derecha.)
 - Para realizar la compra, debe ingresar al carrito, clickar en "INICIAR COMPRA", y será redirigido al detalle final de la compra donde el usuario al tocar el botón de "COMPRAR" deberá completar el formulario con sus datos.
-- Desde allí el usuario recibirá el ID de su orden de compra y la misma será enviada a la base de datos de Firebase.
+- Luego el usuario recibirá el ID de su orden de compra y la misma será enviada a la base de datos de Firebase.
 
 # Demo
 
